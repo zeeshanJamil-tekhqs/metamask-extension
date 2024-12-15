@@ -1,0 +1,50 @@
+# This script will probably eventually live at
+# https://github.com/MetaMask/github-tools/blob/main/.github/actions/setup-environment/action.yml
+name: Setup environment
+description: Setup environment
+inputs:
+  should-cache-restore:
+    required: true
+  should-cache-save:
+    required: false
+    default: 'false'
+runs:
+  using: composite
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    # actions/cache/restore will not work in a container unless zstd is installed
+    - name: Install zstd
+      if: ${{ job.container }}
+      run: sudo apt-get update && sudo apt-get install zstd
+      shell: bash
+
+    - name: Download workspace
+      if: ${{ inputs.should-cache-restore == 'true' }}
+      uses: actions/cache/restore@v4
+      with:
+        path: ./node_modules
+        key: workspace-${{ github.sha }}
+
+    - run: corepack enable
+      shell: bash
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version-file: .nvmrc
+        cache: yarn
+        cache-dependency-path: yarn.lock
+
+    - name: Install dependencies
+      if: ${{ inputs.should-cache-restore == 'false' }}
+      run: yarn --immutable
+      shell: bash
+
+    - name: Cache workspace
+      if: ${{ inputs.should-cache-save == 'true' }}
+      uses: actions/cache/save@v4
+      with:
+        path: ./node_modules
+        key: workspace-${{ github.sha }}

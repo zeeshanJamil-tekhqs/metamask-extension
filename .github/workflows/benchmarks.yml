@@ -1,0 +1,46 @@
+name: 'Run Benchmarks'
+
+on: workflow_call
+
+jobs:
+  benchmark:
+    name: Benchmark
+    # runs-on: ubuntu-latest
+    # runs-on: [self-hosted, Linux, X64]
+    runs-on: gha-mm-scale-set-ubuntu-22.04-amd64-med
+    container:
+      image: cimg/node:20.18-browsers
+      # options: --user root
+    steps:
+      - name: Setup environment
+        uses: MetaMask/metamask-extension/.github/actions/setup-environment@prep-deps-and-self-hosted
+        with:
+          should-cache-restore: true
+
+      # - name: Debugging with tmate
+      #   uses: ./.github/actions/actions-tmate
+
+      # - run: yarn build:test
+      - run: yarn webpack --test
+
+      - name: Install prereqs
+        run: |
+          # apt-get update
+          # apt-get install -y xvfb
+          # apt-get -y install xorg xvfb gtk2-engines-pixbuf
+          # apt-get -y install dbus-x11 xfonts-base xfonts-100dpi xfonts-75dpi xfonts-cyrillic xfonts-scalable
+          Xvfb -ac :99 -screen 0 1280x1024x16 &
+          # export DISPLAY=:99
+
+      - name: Run the benchmark
+        run: yarn benchmark:chrome --out test-artifacts/chrome/benchmark/pageload.json --retries 2
+
+      - name: 'Upload Artifact'
+        uses: actions/upload-artifact@v4
+        with:
+          name: pageload
+          path: test-artifacts/chrome/benchmark/pageload.json
+          retention-days: 5
+# TODO
+# user-actions-benchmark:
+#   name: User Actions Benchmark

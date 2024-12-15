@@ -6,6 +6,9 @@ on:
       - main
       - master
       - Version-v*
+      - gh-readonly-queue.*
+      - trigger-ci.*
+      - prep-deps-and-self-hosted
   pull_request:
     types:
       - opened
@@ -14,6 +17,15 @@ on:
   merge_group:
 
 jobs:
+  prep-deps:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup environment
+        uses: MetaMask/metamask-extension/.github/actions/setup-environment@prep-deps-and-self-hosted
+        with:
+          should-cache-restore: false
+          should-cache-save: true
+
   lint-workflows:
     name: Lint workflows
     uses: metamask/github-tools/.github/workflows/lint-workflows.yml@c534f265e02af2f2422a3c686bb09a11bfbf4cc2
@@ -59,8 +71,12 @@ jobs:
     uses: ./.github/workflows/validate-lavamoat-policy-webapp.yml
 
   run-tests:
-    name: Run tests
+    needs: prep-deps
     uses: ./.github/workflows/run-tests.yml
+
+  run-benchmarks:
+    needs: prep-deps
+    uses: ./.github/workflows/benchmarks.yml
 
   wait-for-circleci-workflow-status:
     name: Wait for CircleCI workflow status
@@ -92,6 +108,8 @@ jobs:
     secrets:
       PR_COMMENT_TOKEN: ${{ secrets.PR_COMMENT_TOKEN }}
 
+  # Explanation for all-jobs-completed and all-jobs-pass being separate:
+  # https://github.com/MetaMask/metamask-module-template/pull/151
   all-jobs-completed:
     name: All jobs completed
     runs-on: ubuntu-latest
@@ -107,6 +125,7 @@ jobs:
       - validate-lavamoat-policy-build
       - validate-lavamoat-policy-webapp
       - run-tests
+      - run-benchmarks
       - wait-for-circleci-workflow-status
       - build-beta
     outputs:
