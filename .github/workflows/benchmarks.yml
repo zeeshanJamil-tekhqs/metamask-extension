@@ -13,7 +13,7 @@ jobs:
       # options: --user root
     steps:
       - name: Setup environment
-        uses: MetaMask/metamask-extension/.github/actions/setup-environment@prep-deps-and-self-hosted
+        uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
           should-cache-restore: true
 
