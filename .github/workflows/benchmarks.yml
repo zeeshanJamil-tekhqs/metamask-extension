@@ -3,37 +3,53 @@ name: 'Run Benchmarks'
 on: workflow_call
 
 jobs:
-  benchmark:
-    name: Benchmark
-    # runs-on: ubuntu-latest
-    # runs-on: [self-hosted, Linux, X64]
-    runs-on: gha-mm-scale-set-ubuntu-22.04-amd64-med
-    container:
-      image: cimg/node:20.18-browsers
-      # options: --user root
+  prep-build-test-webpack:
+    runs-on: ubuntu-latest
     steps:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
           should-cache-restore: true
 
-      # - name: Debugging with tmate
-      #   uses: ./.github/actions/actions-tmate
+      # should add `--env production` to this but need `SEGMENT_PROD_WRITE_KEY`
+      - run: yarn webpack --test --no-lavamoat --no-cache --browser=chrome --lockdown --sentry --snow
 
-      # - run: yarn build:test
-      - run: yarn webpack --test
+      - name: Upload artifact prep-build-test-webpack
+        uses: actions/upload-artifact@v4
+        with:
+          name: prep-build-test-webpack
+          path: ./dist/
+          retention-days: 1
 
-      - name: Install prereqs
-        run: |
-          # apt-get update
-          # apt-get install -y xvfb
-          # apt-get -y install xorg xvfb gtk2-engines-pixbuf
-          # apt-get -y install dbus-x11 xfonts-base xfonts-100dpi xfonts-75dpi xfonts-cyrillic xfonts-scalable
-          Xvfb -ac :99 -screen 0 1280x1024x16 &
-          # export DISPLAY=:99
+  benchmarks:
+    needs: prep-build-test-webpack
+    runs-on: gha-mm-scale-set-ubuntu-22.04-amd64-med
+    container:
+      image: cimg/node:20.18-browsers
+    strategy:
+      matrix:
+        run:
+          - name: benchmark
+            command: 'yarn benchmark:chrome --out test-artifacts/chrome/benchmark/pageload.json --retries 2'
+          - name: user-actions-benchmark
+            command: 'yarn user-actions-benchmark:chrome --out test-artifacts/chrome/benchmark/user_actions.json --retries 2'
+    steps:
+      - name: Setup environment
+        uses: metamask/github-tools/.github/actions/setup-environment@caching
+        with:
+          should-cache-restore: false
+
+      - name: Download artifact prep-build-test-webpack
+        uses: actions/download-artifact@v4
+        with:
+          path: ./dist/
+          pattern: prep-build-test-webpack
+
+      - name: Configure Xvfb
+        run: Xvfb -ac :99 -screen 0 1280x1024x16 &
 
       - name: Run the benchmark
-        run: yarn benchmark:chrome --out test-artifacts/chrome/benchmark/pageload.json --retries 2
+        run: ${{ matrix.run.command }}
 
       - name: 'Upload Artifact'
         uses: actions/upload-artifact@v4
@@ -41,6 +57,3 @@ jobs:
           name: pageload
           path: test-artifacts/chrome/benchmark/pageload.json
           retention-days: 5
-# TODO
-# user-actions-benchmark:
-#   name: User Actions Benchmark
