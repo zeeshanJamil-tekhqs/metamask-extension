@@ -1,12 +1,16 @@
 on:
   workflow_call:
     inputs:
+      name:
+        required: true
+        type: string
       command:
         required: true
         type: string
 
 jobs:
   benchmarks:
+    name: ${{ inputs.name }}
     runs-on: gha-mm-scale-set-ubuntu-22.04-amd64-med
     container:
       image: cimg/node:20.18-browsers
@@ -29,7 +33,7 @@ jobs:
       - name: Run the benchmark
         run: ${{ inputs.command }}
 
-      - name: 'Upload Artifact'
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: pageload
