@@ -95,15 +95,7 @@ jobs:
 
   run-benchmarks:
     needs: prep-build-test-webpack
-    uses: ./.github/workflows/benchmarks.yml
-    with:
-      command: 'yarn benchmark:chrome --out test-artifacts/chrome/benchmark/pageload.json --retries 2'
-
-  run-user-actions-benchmark:
-    needs: prep-build-test-webpack
-    uses: ./.github/workflows/benchmarks.yml
-    with:
-      command: 'yarn user-actions-benchmark:chrome --out test-artifacts/chrome/benchmark/user_actions.json --retries 2'
+    uses: ./.github/workflows/run-benchmarks.yml
 
   wait-for-circleci-workflow-status:
     name: Wait for CircleCI workflow status
