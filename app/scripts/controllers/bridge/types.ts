@@ -31,7 +31,7 @@ type BridgeControllerActions =
 
 type BridgeControllerEvents = ControllerStateChangeEvent<
   typeof BRIDGE_CONTROLLER_NAME,
-  { bridgeState: BridgeControllerState }
+  BridgeControllerState
 >;
 
 type AllowedActions =
