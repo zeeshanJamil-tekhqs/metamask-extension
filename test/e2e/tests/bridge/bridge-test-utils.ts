@@ -18,6 +18,7 @@ import {
   ETH_CONVERSION_RATE_USD,
   MOCK_CURRENCY_RATES,
 } from './constants';
+import { Tenderly } from '../../tenderly-network';
 
 const IS_FIREFOX = process.env.SELENIUM_BROWSER === Browser.FIREFOX;
 
@@ -141,7 +142,7 @@ export const getBridgeFixtures = (
   const fixtureBuilder = new FixtureBuilder({
     inputChainId: CHAIN_IDS.MAINNET,
   })
-    .withNetworkControllerOnMainnet()
+    .withNetworkControllerOnTenderly(Tenderly.Mainnet.url)
     .withCurrencyController(MOCK_CURRENCY_RATES)
     .withBridgeControllerDefaultState();
 
@@ -152,15 +153,12 @@ export const getBridgeFixtures = (
   return {
     driverOptions: {
       // openDevToolsForTabs: true,
+      disableGanache: true,
     },
     fixtures: fixtureBuilder.build(),
     testSpecificMock: mockServer(featureFlags),
     smartContract: SMART_CONTRACTS.HST,
     ethConversionInUsd: ETH_CONVERSION_RATE_USD,
-    ganacheOptions: generateGanacheOptions({
-      hardfork: 'london',
-      chain: { chainId: CHAIN_IDS.MAINNET },
-    }),
     title,
   };
 };
