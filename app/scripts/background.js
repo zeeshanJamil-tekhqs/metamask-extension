@@ -1302,10 +1302,6 @@ const addAppInstalledEvent = () => {
   }, 500);
 };
 
-browser.runtime.onInstalled.addListener(function(details){
-  browser.storage.session.set({ isFirstTimeInstall: details.reason === 'install' });
-});
-
 async function awaitFirstTimeInstall() {
   const sessionData = await browser.storage.session.get([
     'isFirstTimeInstall',
