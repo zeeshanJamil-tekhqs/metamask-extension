@@ -2,6 +2,7 @@ import { createModuleLogger, createProjectLogger } from '@metamask/utils';
 import * as Sentry from '@sentry/browser';
 import { logger } from '@sentry/utils';
 import browser from 'webextension-polyfill';
+import { fetchWithSentryInstrumentation } from '../../../shared/lib/trace';
 import { isManifestV3 } from '../../../shared/modules/mv3.utils';
 import extractEthjsErrorMessage from './extractEthjsErrorMessage';
 import { getManifestFlags } from './manifestFlags';
@@ -65,6 +66,7 @@ export default function setupSentry() {
     });
   integrateLogging();
   setSentryClient();
+  Object.assign(window, { fetch: fetchWithSentryInstrumentation });
 
   return {
     ...Sentry,
