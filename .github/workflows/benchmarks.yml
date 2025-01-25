@@ -8,17 +8,22 @@ on:
         required: true
         type: string
 
+# It's not easy to pass this in from main.yml, so define it again
+env:
+  USE_CACHING: 'true'
+
 jobs:
   benchmarks:
     name: ${{ inputs.name }}
-    runs-on: gha-mm-scale-set-ubuntu-22.04-amd64-med
+    runs-on: ubuntu-latest
+    # runs-on: gha-mm-scale-set-ubuntu-22.04-amd64-med
     container:
-      image: cimg/node:20.18-browsers
+      image: cimg/node:22.13-browsers
     steps:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: false
+          should-cache-restore: ${{ env.USE_CACHING }}
 
       - name: Download artifact prep-build-test-webpack
         uses: actions/download-artifact@v4
