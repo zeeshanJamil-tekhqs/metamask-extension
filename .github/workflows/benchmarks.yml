@@ -11,13 +11,12 @@ on:
 # It's not easy to pass this in from main.yml, so define it again
 # This should become a GitHub ENV variable
 env:
-  USE_CACHING: 'false'
+  USE_CACHING: 'true'
 
 jobs:
   benchmarks:
     name: ${{ inputs.name }}
-    runs-on: ubuntu-latest
-    # runs-on: gha-mm-scale-set-ubuntu-22.04-amd64-med
+    runs-on: gha-mm-scale-set-ubuntu-22.04-amd64-med
     container:
       image: cimg/node:22.13-browsers
     steps:
