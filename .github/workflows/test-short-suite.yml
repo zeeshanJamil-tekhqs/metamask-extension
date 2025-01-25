@@ -1,4 +1,4 @@
-name: Test lint changelog
+name: Test short suite
 
 on:
   workflow_call:
@@ -8,10 +8,9 @@ env:
   USE_CACHING: 'true'
 
 jobs:
-  test-lint-changelog:
-    name: Test lint changelog
+  test-short-suite:
+    name: Test short suite
     runs-on: ubuntu-latest
-    continue-on-error: true
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -23,6 +22,7 @@ jobs:
 
       # test-lint-shellcheck
       - name: ShellCheck Lint
+        if: always()
         run: ./development/shellcheck.sh
 
       # test-lint-changelog
@@ -40,28 +40,35 @@ jobs:
 
       # test-lint-lockfile
       - name: Lint lockfile
+        if: always()
         run: yarn lint:lockfile
 
       - name: Check yarn resolutions
+        if: always()
         run: yarn --check-resolutions
 
       # test-deps-audit
       - name: Run audit
+        if: always()
         run: yarn audit
 
       # test-yarn-dedupe
       - name: Detect yarn lock deduplications
+        if: always()
         run: yarn dedupe --check
 
       # test-deps-depcheck
       - name: Run depcheck
+        if: always()
         run: yarn depcheck
 
       # validate-lavamoat-allow-scripts
       - name: Validate allow-scripts config
+        if: always()
         run: yarn allow-scripts auto
 
       - name: Check working tree
+        if: always()
         run: |
           if ! git diff --exit-code; then
               echo "::error::Working tree dirty."
