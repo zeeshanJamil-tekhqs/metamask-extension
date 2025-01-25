@@ -16,6 +16,9 @@ on:
       - synchronize
   merge_group:
 
+env:
+  USE_CACHING: 'true'
+
 jobs:
   prep-deps:
     runs-on: ubuntu-latest
@@ -23,12 +26,12 @@ jobs:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: false
-          should-cache-save: true
+          should-cache-restore: 'false'
+          should-cache-save: ${{ env.USE_CACHING }}
 
   lint-workflows:
     name: Lint workflows
-    uses: metamask/github-tools/.github/workflows/lint-workflows.yml@c534f265e02af2f2422a3c686bb09a11bfbf4cc2
+    uses: metamask/github-tools/.github/workflows/lint-workflows.yml@caching
 
   test-lint-shellcheck:
     name: Test lint shellcheck
@@ -77,7 +80,7 @@ jobs:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: true
+          should-cache-restore: ${{ env.USE_CACHING }}
 
       # should add `--env production` to this but need `SEGMENT_PROD_WRITE_KEY`
       - run: yarn webpack --test --no-lavamoat --no-cache --browser=chrome --lockdown --sentry --snow
@@ -94,19 +97,19 @@ jobs:
     uses: ./.github/workflows/run-tests.yml
 
   run-pageload-benchmark:
-    name: Run Benchmarks
+    name: Run Benchmarks # So that the level 1 name will be "Run Benchmarks" in the GitHub Actions UI
     needs: prep-build-test-webpack
     uses: ./.github/workflows/benchmarks.yml
     with:
-      name: run-pageload-benchmark
+      name: run-pageload-benchmark # The level 2 name
       command: 'yarn benchmark:chrome --out test-artifacts/chrome/benchmark/pageload.json --retries 2'
 
   run-user-actions-benchmark:
-    name: Run Benchmarks
+    name: Run Benchmarks # So that the level 1 name will be "Run Benchmarks" in the GitHub Actions UI
     needs: prep-build-test-webpack
     uses: ./.github/workflows/benchmarks.yml
     with:
-      name: run-user-actions-benchmark
+      name: run-user-actions-benchmark # The level 2 name
       command: 'yarn user-actions-benchmark:chrome --out test-artifacts/chrome/benchmark/user_actions.json --retries 2'
 
   wait-for-circleci-workflow-status:
