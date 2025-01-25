@@ -10,7 +10,7 @@ on:
 
 # It's not easy to pass this in from main.yml, so define it again
 env:
-  USE_CACHING: 'true'
+  USE_CACHING: 'false'
 
 jobs:
   benchmarks:
