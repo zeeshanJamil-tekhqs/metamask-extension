@@ -3,6 +3,10 @@ name: Build beta
 on:
   workflow_call:
 
+# It's not easy to pass this in from main.yml, so define it again
+env:
+  USE_CACHING: 'true'
+
 jobs:
   build-beta:
     name: Build beta
@@ -42,7 +46,9 @@ jobs:
 
       - name: Setup environment
         if: ${{ steps.needs-beta-build.outputs.NEEDS_BETA_BUILD == 'true' }}
-        uses: metamask/github-tools/.github/actions/setup-environment@main
+        uses: metamask/github-tools/.github/actions/setup-environment@caching
+        with:
+          should-cache-restore: ${{ env.USE_CACHING }}
 
       - name: Run beta build
         if: ${{ steps.needs-beta-build.outputs.NEEDS_BETA_BUILD == 'true' }}

@@ -1,0 +1,69 @@
+name: Test lint changelog
+
+on:
+  workflow_call:
+
+# It's not easy to pass this in from main.yml, so define it again
+env:
+  USE_CACHING: 'true'
+
+jobs:
+  test-lint-changelog:
+    name: Test lint changelog
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup environment
+        uses: metamask/github-tools/.github/actions/setup-environment@caching
+        with:
+          should-cache-restore: ${{ env.USE_CACHING }}
+
+      # test-lint-shellcheck
+      - name: ShellCheck Lint
+        run: ./development/shellcheck.sh
+
+      # test-lint-changelog
+      - name: Validate changelog
+        # For a `pull_request` event, the branch is `github.head_ref``.
+        # For a `push` event, the branch is `github.ref_name`.
+        if: ${{ !startsWith(github.head_ref || github.ref_name, 'Version-v') }}
+        run: yarn lint:changelog
+
+      - name: Validate release candidate changelog
+        # For a `pull_request` event, the branch is `github.head_ref``.
+        # For a `push` event, the branch is `github.ref_name`.
+        if: ${{ startsWith(github.head_ref || github.ref_name, 'Version-v') }}
+        run: .circleci/scripts/validate-changelog-in-rc.sh
+
+      # test-lint-lockfile
+      - name: Lint lockfile
+        run: yarn lint:lockfile
+
+      - name: Check yarn resolutions
+        run: yarn --check-resolutions
+
+      # test-deps-audit
+      - name: Run audit
+        run: yarn audit
+
+      # test-yarn-dedupe
+      - name: Detect yarn lock deduplications
+        run: yarn dedupe --check
+
+      # test-deps-depcheck
+      - name: Run depcheck
+        run: yarn depcheck
+
+      # validate-lavamoat-allow-scripts
+      - name: Validate allow-scripts config
+        run: yarn allow-scripts auto
+
+      - name: Check working tree
+        run: |
+          if ! git diff --exit-code; then
+              echo "::error::Working tree dirty."
+              exit 1
+          fi
