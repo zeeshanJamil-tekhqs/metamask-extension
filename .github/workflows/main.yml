@@ -16,6 +16,7 @@ on:
       - synchronize
   merge_group:
 
+# This should become a GitHub ENV variable
 env:
   USE_CACHING: 'true'
 

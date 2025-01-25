@@ -11,6 +11,7 @@ on:
         value: ${{ jobs.report-coverage.outputs.stored-coverage }}
 
 # It's not easy to pass this in from main.yml, so define it again
+# This should become a GitHub ENV variable
 env:
   USE_CACHING: 'true'
 
