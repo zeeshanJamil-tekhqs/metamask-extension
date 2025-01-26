@@ -10,11 +10,6 @@ on:
         description: Stored coverage
         value: ${{ jobs.report-coverage.outputs.stored-coverage }}
 
-# It's not easy to pass this in from main.yml, so define it again
-# This should become a GitHub ENV variable
-env:
-  USE_CACHING: 'true'
-
 jobs:
   test-unit:
     name: Unit tests
@@ -26,7 +21,7 @@ jobs:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: ${{ env.USE_CACHING }}
+          should-cache-restore: ${{ vars.USE_CACHING }}
 
       - name: test:unit:coverage
         run: yarn test:unit:coverage --shard=${{ matrix.shard }}/${{ strategy.job-total }}
@@ -46,7 +41,7 @@ jobs:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: ${{ env.USE_CACHING }}
+          should-cache-restore: ${{ vars.USE_CACHING }}
 
       - name: test:unit:webpack:coverage
         run: yarn test:unit:webpack:coverage
@@ -66,7 +61,7 @@ jobs:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: ${{ env.USE_CACHING }}
+          should-cache-restore: ${{ vars.USE_CACHING }}
 
       - name: test:integration:coverage
         run: yarn test:integration:coverage
@@ -93,7 +88,7 @@ jobs:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: ${{ env.USE_CACHING }}
+          should-cache-restore: ${{ vars.USE_CACHING }}
 
       - name: Download artifacts
         uses: actions/download-artifact@v4

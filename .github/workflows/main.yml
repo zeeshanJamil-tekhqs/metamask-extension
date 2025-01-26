@@ -16,10 +16,6 @@ on:
       - synchronize
   merge_group:
 
-# This should become a GitHub ENV variable
-env:
-  USE_CACHING: 'true'
-
 jobs:
   prep-deps:
     runs-on: ubuntu-latest
@@ -28,7 +24,11 @@ jobs:
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
           should-cache-restore: 'false'
-          should-cache-save: ${{ env.USE_CACHING }}
+          should-cache-save: ${{ vars.USE_CACHING }}
+          # -- If you're a repo admin, you can change vars.USE_CACHING at:
+          #    https://github.com/MetaMask/metamask-extension/settings/variables/actions
+          # -- If you're just a contributor, you can change vars.USE_CACHING by following this documentation:
+          #    https://docs.github.com/en/rest/actions/variables?apiVersion=2022-11-28#update-a-repository-variable
 
   lint-workflows:
     name: Lint workflows
@@ -57,7 +57,7 @@ jobs:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: ${{ env.USE_CACHING }}
+          should-cache-restore: ${{ vars.USE_CACHING }}
 
       # should add `--env production` to this but need `SEGMENT_PROD_WRITE_KEY`
       - run: yarn webpack --test --no-lavamoat --no-cache --browser=chrome --lockdown --sentry --snow

@@ -3,11 +3,6 @@ name: Validate lavamoat policy build
 on:
   workflow_call:
 
-# It's not easy to pass this in from main.yml, so define it again
-# This should become a GitHub ENV variable
-env:
-  USE_CACHING: 'true'
-
 jobs:
   validate-lavamoat-policy-build:
     name: Validate lavamoat policy build
@@ -19,7 +14,7 @@ jobs:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: ${{ env.USE_CACHING }}
+          should-cache-restore: ${{ vars.USE_CACHING }}
 
       - name: Validate lavamoat build policy
         run: yarn lavamoat:build:auto

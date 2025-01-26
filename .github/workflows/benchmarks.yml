@@ -8,11 +8,6 @@ on:
         required: true
         type: string
 
-# It's not easy to pass this in from main.yml, so define it again
-# This should become a GitHub ENV variable
-env:
-  USE_CACHING: 'true'
-
 jobs:
   benchmarks:
     name: ${{ inputs.name }}
@@ -23,7 +18,7 @@ jobs:
       - name: Setup environment
         uses: metamask/github-tools/.github/actions/setup-environment@caching
         with:
-          should-cache-restore: ${{ env.USE_CACHING }}
+          should-cache-restore: ${{ vars.USE_CACHING }}
 
       - name: Download artifact prep-build-test-webpack
         uses: actions/download-artifact@v4
