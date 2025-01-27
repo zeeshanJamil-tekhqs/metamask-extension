@@ -342,7 +342,8 @@ export type MemStoreControllersComposedState = Omit<
 
 export type BackgroundStateProxy = {
   isInitialized: boolean;
-} & MemStoreControllersComposedState;
+} & StoreControllersComposedState &
+  MemStoreControllersComposedState;
 
 export type FlattenedBackgroundStateProxy = {
   isInitialized: boolean;

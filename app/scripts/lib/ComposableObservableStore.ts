@@ -10,14 +10,14 @@ import {
 import { getKnownPropertyNames } from '@metamask/utils';
 import {
   MemStoreControllers,
-  MemStoreControllersComposedState,
+  BackgroundStateProxy,
 } from '../../../shared/types/background';
 
 /**
  * An ObservableStore that can compose the state objects of its child stores and controllers
  */
 export default class ComposableObservableStore extends ObservableStore<
-  Partial<MemStoreControllersComposedState>
+  Partial<BackgroundStateProxy>
 > {
   /**
    * Describes which stores are being composed. The key is the name of the
@@ -48,7 +48,7 @@ export default class ComposableObservableStore extends ObservableStore<
   }: {
     config?: MemStoreControllers;
     controllerMessenger: ControllerMessenger<ActionConstraint, EventConstraint>;
-    state?: Partial<MemStoreControllersComposedState>;
+    state?: Partial<BackgroundStateProxy>;
     persist?: boolean;
   }) {
     super(state);
@@ -72,80 +72,71 @@ export default class ComposableObservableStore extends ObservableStore<
     this.removeAllListeners();
     const initialState = getKnownPropertyNames(
       config,
-    ).reduce<MemStoreControllersComposedState>(
-      (composedState, controllerKey) => {
-        const controller = config[controllerKey];
-        if (!controller) {
-          throw new Error(`Undefined '${controllerKey}'`);
-        }
+    ).reduce<BackgroundStateProxy>((composedState, controllerKey) => {
+      const controller = config[controllerKey];
+      if (!controller) {
+        throw new Error(`Undefined '${controllerKey}'`);
+      }
 
-        if ('store' in controller && Boolean(controller.store?.subscribe)) {
-          const { store } = controller;
-          store.subscribe(
-            (state: MemStoreControllersComposedState[typeof controllerKey]) => {
-              this.#onStateChange(controllerKey, state);
+      if ('store' in controller && Boolean(controller.store?.subscribe)) {
+        const { store } = controller;
+        store.subscribe((state: BackgroundStateProxy[typeof controllerKey]) => {
+          this.#onStateChange(controllerKey, state);
+        });
+        // @ts-expect-error TODO: Widen `isBaseControllerV1` input type to `unknown`
+      } else if (isBaseControllerV1(controller)) {
+        controller.subscribe((state) => {
+          // @ts-expect-error V2 controller state excluded by type guard
+          this.#onStateChange(controllerKey, state);
+        });
+      }
+      // @ts-expect-error TODO: Widen `isBaseController{,V1}` input types to `unknown`
+      if (isBaseController(controller) || isBaseControllerV1(controller)) {
+        try {
+          this.controllerMessenger.subscribe<`${typeof controller.name}:stateChange`>(
+            `${controller.name}:stateChange`,
+            // @ts-expect-error TODO: Fix `handler` being typed as `never` by defining `Global{Actions,Events}` types and supplying them to `MetamaskController['controllerMessenger']`
+            (state: BackgroundStateProxy[typeof controllerKey]) => {
+              let updatedState: Partial<
+                BackgroundStateProxy[typeof controllerKey]
+              > = state;
+              if (this.persist && 'metadata' in controller) {
+                updatedState = getPersistentState(
+                  // @ts-expect-error No state object can be passed into this parameter because its type is wider than all V2 state objects.
+                  // TODO: Fix this parameter's type to be the widest subtype of V2 controller state types instead of their supertype/constraint.
+                  state,
+                  controller.metadata,
+                ) as Partial<BackgroundStateProxy[typeof controllerKey]>;
+              }
+              this.#onStateChange(controllerKey, updatedState);
             },
           );
-          // @ts-expect-error TODO: Widen `isBaseControllerV1` input type to `unknown`
-        } else if (isBaseControllerV1(controller)) {
-          controller.subscribe((state) => {
-            // @ts-expect-error V2 controller state excluded by type guard
-            this.#onStateChange(controllerKey, state);
-          });
+        } catch (e) {
+          throw new Error(
+            `Cannot read properties of undefined (reading 'subscribe')`,
+          );
         }
-        // @ts-expect-error TODO: Widen `isBaseController{,V1}` input types to `unknown`
-        if (isBaseController(controller) || isBaseControllerV1(controller)) {
-          try {
-            this.controllerMessenger.subscribe<`${typeof controller.name}:stateChange`>(
-              `${controller.name}:stateChange`,
-              // @ts-expect-error TODO: Fix `handler` being typed as `never` by defining `Global{Actions,Events}` types and supplying them to `MetamaskController['controllerMessenger']`
-              (
-                state: MemStoreControllersComposedState[typeof controllerKey],
-              ) => {
-                let updatedState: Partial<
-                  MemStoreControllersComposedState[typeof controllerKey]
-                > = state;
-                if (this.persist && 'metadata' in controller) {
-                  updatedState = getPersistentState(
-                    // @ts-expect-error No state object can be passed into this parameter because its type is wider than all V2 state objects.
-                    // TODO: Fix this parameter's type to be the widest subtype of V2 controller state types instead of their supertype/constraint.
-                    state,
-                    controller.metadata,
-                  ) as Partial<
-                    MemStoreControllersComposedState[typeof controllerKey]
-                  >;
-                }
-                this.#onStateChange(controllerKey, updatedState);
-              },
-            );
-          } catch (e) {
-            throw new Error(
-              `Cannot read properties of undefined (reading 'subscribe')`,
-            );
-          }
-        }
+      }
 
-        let controllerState;
-        if ('store' in controller && 'subscribe' in controller.store) {
-          controllerState = controller.store.getState?.();
-        } else if ('state' in controller) {
-          controllerState = controller.state;
-        }
+      let controllerState;
+      if ('store' in controller && 'subscribe' in controller.store) {
+        controllerState = controller.store.getState?.();
+      } else if ('state' in controller) {
+        controllerState = controller.state;
+      }
 
-        composedState[controllerKey] =
-          this.persist && 'metadata' in controller && controller.metadata
-            ? getPersistentState(controllerState, controller.metadata)
-            : controllerState;
-        return composedState;
-      },
-      {} as never,
-    );
+      composedState[controllerKey] =
+        this.persist && 'metadata' in controller && controller.metadata
+          ? getPersistentState(controllerState, controller.metadata)
+          : controllerState;
+      return composedState;
+    }, {} as never);
     this.updateState(initialState);
   }
 
   #onStateChange(
     controllerKey: keyof MemStoreControllers,
-    newState: Partial<MemStoreControllersComposedState[typeof controllerKey]>,
+    newState: Partial<BackgroundStateProxy[typeof controllerKey]>,
   ) {
     const oldState = this.getState()[controllerKey];
 
