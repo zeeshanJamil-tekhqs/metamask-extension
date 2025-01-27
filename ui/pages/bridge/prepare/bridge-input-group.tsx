@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { BigNumber } from 'bignumber.js';
 import { getAddress } from 'ethers/lib/utils';
@@ -7,16 +7,20 @@ import {
   TextField,
   TextFieldType,
   ButtonLink,
-  PopoverPosition,
   Button,
   ButtonSize,
 } from '../../../components/component-library';
 import { AssetPicker } from '../../../components/multichain/asset-picker-amount/asset-picker';
 import { TabName } from '../../../components/multichain/asset-picker-amount/asset-picker-modal/asset-picker-modal-tabs';
 import { useI18nContext } from '../../../hooks/useI18nContext';
-import { getCurrentCurrency, getLocale } from '../../../selectors';
-import { formatCurrencyAmount, formatTokenAmount } from '../utils/quote';
-import { Column, Row, Tooltip } from '../layout';
+import { getLocale } from '../../../selectors';
+import { getCurrentCurrency } from '../../../ducks/metamask/metamask';
+import {
+  formatCurrencyAmount,
+  formatTokenAmount,
+  isNativeAddress,
+} from '../utils/quote';
+import { Column, Row } from '../layout';
 import {
   Display,
   FontWeight,
@@ -26,16 +30,16 @@ import {
   TextColor,
 } from '../../../helpers/constants/design-system';
 import { AssetType } from '../../../../shared/constants/transaction';
-import { BRIDGE_QUOTE_MAX_RETURN_DIFFERENCE_PERCENTAGE } from '../../../../shared/constants/bridge';
 import useLatestBalance from '../../../hooks/bridge/useLatestBalance';
 import {
   getBridgeQuotes,
   getValidationErrors,
 } from '../../../ducks/bridge/selectors';
 import { shortenString } from '../../../helpers/utils/util';
-import { BridgeToken } from '../types';
+import type { BridgeToken } from '../../../../shared/types/bridge';
 import { useCopyToClipboard } from '../../../hooks/useCopyToClipboard';
 import { MINUTE } from '../../../../shared/constants/time';
+import { getMultichainIsSolana } from '../../../selectors/multichain';
 import { BridgeAssetPickerButton } from './components/bridge-asset-picker-button';
 
 export const BridgeInputGroup = ({
@@ -86,17 +90,17 @@ export const BridgeInputGroup = ({
 
   const inputRef = useRef<HTMLInputElement | null>(null);
 
-  const [isLowReturnTooltipOpen, setIsLowReturnTooltipOpen] = useState(true);
+  const isAmountReadOnly =
+    amountFieldProps?.readOnly || amountFieldProps?.disabled;
 
   useEffect(() => {
-    if (inputRef.current) {
+    if (!isAmountReadOnly && inputRef.current) {
       inputRef.current.value = amountFieldProps?.value?.toString() ?? '';
       inputRef.current.focus();
     }
-  }, [amountFieldProps]);
+  }, [amountFieldProps?.value, isAmountReadOnly, token]);
 
-  const isAmountReadOnly =
-    amountFieldProps?.readOnly || amountFieldProps?.disabled;
+  const isSolana = useSelector(getMultichainIsSolana);
 
   return (
     <Column paddingInline={6} gap={1}>
@@ -160,7 +164,6 @@ export const BridgeInputGroup = ({
           customTokenListGenerator={customTokenListGenerator}
           isTokenListLoading={isTokenListLoading}
           isMultiselectEnabled={isMultiselectEnabled}
-          autoFocus={false}
         >
           {(onClickHandler, networkImageSrc) =>
             isAmountReadOnly && !token ? (
@@ -172,7 +175,7 @@ export const BridgeInputGroup = ({
                 fontWeight={FontWeight.Normal}
                 style={{ whiteSpace: 'nowrap' }}
               >
-                {t('bridgeTo')}
+                {isSolana ? t('swapSwapTo') : t('bridgeTo')}
               </Button>
             ) : (
               <BridgeAssetPickerButton
@@ -188,23 +191,6 @@ export const BridgeInputGroup = ({
 
       <Row justifyContent={JustifyContent.spaceBetween}>
         <Row>
-          {isAmountReadOnly &&
-            isEstimatedReturnLow &&
-            isLowReturnTooltipOpen && (
-              <Tooltip
-                title={t('lowEstimatedReturnTooltipTitle')}
-                position={PopoverPosition.TopStart}
-                isOpen={isLowReturnTooltipOpen}
-                onClose={() => setIsLowReturnTooltipOpen(false)}
-                triggerElement={<span />}
-                flip={false}
-                offset={[0, 80]}
-              >
-                {t('lowEstimatedReturnTooltipMessage', [
-                  BRIDGE_QUOTE_MAX_RETURN_DIFFERENCE_PERCENTAGE * 100,
-                ])}
-              </Tooltip>
-            )}
           <Text
             variant={TextVariant.bodyMd}
             fontWeight={FontWeight.Normal}
@@ -254,7 +240,7 @@ export const BridgeInputGroup = ({
             : undefined}
           {onMaxButtonClick &&
             token &&
-            token.type !== AssetType.native &&
+            !isNativeAddress(token.address) &&
             balanceAmount && (
               <ButtonLink
                 variant={TextVariant.bodyMd}

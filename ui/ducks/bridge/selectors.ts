@@ -1,11 +1,11 @@
-import {
+import type {
   AddNetworkFields,
   NetworkConfiguration,
   NetworkState,
 } from '@metamask/network-controller';
 import { orderBy, uniqBy } from 'lodash';
 import { createSelector } from 'reselect';
-import { GasFeeEstimates } from '@metamask/gas-fee-controller';
+import type { GasFeeEstimates } from '@metamask/gas-fee-controller';
 import { BigNumber } from 'bignumber.js';
 import { calcTokenAmount } from '@metamask/notification-services-controller/push-services';
 import {
@@ -20,12 +20,7 @@ import {
   BRIDGE_PREFERRED_GAS_ESTIMATE,
   BRIDGE_QUOTE_MAX_RETURN_DIFFERENCE_PERCENTAGE,
 } from '../../../shared/constants/bridge';
-import {
-  BridgeControllerState,
-  BridgeFeatureFlagsKey,
-  // TODO: Remove restricted import
-  // eslint-disable-next-line import/no-restricted-paths
-} from '../../../app/scripts/controllers/bridge/types';
+import type { BridgeControllerState } from '../../../shared/types/bridge';
 import { createDeepEqualSelector } from '../../../shared/modules/selectors/util';
 import { SWAPS_CHAINID_DEFAULT_TOKEN_MAP } from '../../../shared/constants/swaps';
 import {
@@ -33,16 +28,15 @@ import {
   getNetworkConfigurationsByChainId,
 } from '../../../shared/modules/selectors/networks';
 import { getConversionRate, getGasFeeEstimates } from '../metamask/metamask';
-// TODO: Remove restricted import
-// eslint-disable-next-line import/no-restricted-paths
-import { RequestStatus } from '../../../app/scripts/controllers/bridge/constants';
 import {
-  L1GasFees,
-  BridgeToken,
-  QuoteMetadata,
-  QuoteResponse,
+  type L1GasFees,
+  type BridgeToken,
+  type QuoteMetadata,
+  type QuoteResponse,
   SortOrder,
-} from '../../pages/bridge/types';
+  BridgeFeatureFlagsKey,
+  RequestStatus,
+} from '../../../shared/types/bridge';
 import {
   calcAdjustedReturn,
   calcCost,
@@ -64,7 +58,7 @@ import {
   exchangeRateFromMarketData,
   tokenPriceInNativeAsset,
 } from './utils';
-import { BridgeState } from './bridge';
+import type { BridgeState } from './bridge';
 
 type BridgeAppState = {
   metamask: { bridgeState: BridgeControllerState } & NetworkState & {
@@ -138,35 +132,6 @@ export const getToChain = createDeepEqualSelector(
   (state: BridgeAppState) => state.bridge.toChainId,
   (toChains, toChainId): NetworkConfiguration | AddNetworkFields | undefined =>
     toChains.find(({ chainId }) => chainId === toChainId),
-);
-
-export const getFromTokens = createDeepEqualSelector(
-  (state: BridgeAppState) => state.metamask.bridgeState.srcTokens,
-  (state: BridgeAppState) => state.metamask.bridgeState.srcTopAssets,
-  (state: BridgeAppState) =>
-    state.metamask.bridgeState.srcTokensLoadingStatus === RequestStatus.LOADING,
-  (fromTokens, fromTopAssets, isLoading) => {
-    return {
-      isLoading,
-      fromTokens: fromTokens ?? {},
-      fromTopAssets: fromTopAssets ?? [],
-    };
-  },
-);
-
-export const getToTokens = createDeepEqualSelector(
-  (state: BridgeAppState) => state.metamask.bridgeState.destTokens,
-  (state: BridgeAppState) => state.metamask.bridgeState.destTopAssets,
-  (state: BridgeAppState) =>
-    state.metamask.bridgeState.destTokensLoadingStatus ===
-    RequestStatus.LOADING,
-  (toTokens, toTopAssets, isLoading) => {
-    return {
-      isLoading,
-      toTokens: toTokens ?? {},
-      toTopAssets: toTopAssets ?? [],
-    };
-  },
 );
 
 export const getFromToken = createSelector(
@@ -436,16 +401,18 @@ const _getSelectedQuote = createSelector(
 );
 
 export const getBridgeQuotes = createSelector(
-  _getSortedQuotesWithMetadata,
-  _getSelectedQuote,
-  (state) => state.metamask.bridgeState.quotesLastFetched,
-  (state) =>
-    state.metamask.bridgeState.quotesLoadingStatus === RequestStatus.LOADING,
-  (state: BridgeAppState) => state.metamask.bridgeState.quotesRefreshCount,
-  (state: BridgeAppState) => state.metamask.bridgeState.quotesInitialLoadTime,
-  (state: BridgeAppState) => state.metamask.bridgeState.quoteFetchError,
-  getBridgeQuotesConfig,
-  getQuoteRequest,
+  [
+    _getSortedQuotesWithMetadata,
+    _getSelectedQuote,
+    (state) => state.metamask.bridgeState.quotesLastFetched,
+    (state) =>
+      state.metamask.bridgeState.quotesLoadingStatus === RequestStatus.LOADING,
+    (state: BridgeAppState) => state.metamask.bridgeState.quotesRefreshCount,
+    (state: BridgeAppState) => state.metamask.bridgeState.quotesInitialLoadTime,
+    (state: BridgeAppState) => state.metamask.bridgeState.quoteFetchError,
+    getBridgeQuotesConfig,
+    getQuoteRequest,
+  ],
   (
     sortedQuotesWithMetadata,
     selectedQuote,

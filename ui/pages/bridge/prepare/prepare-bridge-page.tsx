@@ -10,12 +10,11 @@ import classnames from 'classnames';
 import { debounce } from 'lodash';
 import { useHistory, useLocation } from 'react-router-dom';
 import { BigNumber } from 'bignumber.js';
+import { type TokenListMap } from '@metamask/assets-controllers';
 import {
-  setFromChain,
   setFromToken,
   setFromTokenInputValue,
   setSelectedQuote,
-  setToChain,
   setToChainId,
   setToToken,
   updateQuoteRequestParams,
@@ -27,13 +26,11 @@ import {
   getFromChain,
   getFromChains,
   getFromToken,
-  getFromTokens,
   getQuoteRequest,
   getSlippage,
   getToChain,
   getToChains,
   getToToken,
-  getToTokens,
   getWasTxDeclined,
   getFromAmountInCurrency,
   getValidationErrors,
@@ -63,11 +60,18 @@ import { useI18nContext } from '../../../hooks/useI18nContext';
 import { SWAPS_CHAINID_DEFAULT_TOKEN_MAP } from '../../../../shared/constants/swaps';
 import { useTokensWithFiltering } from '../../../hooks/bridge/useTokensWithFiltering';
 import { setActiveNetwork } from '../../../store/actions';
-import { hexToDecimal } from '../../../../shared/modules/conversion.utils';
-import { QuoteRequest } from '../types';
+import {
+  hexToDecimal,
+  decimalToPrefixedHex,
+} from '../../../../shared/modules/conversion.utils';
+import type { QuoteRequest } from '../../../../shared/types/bridge';
 import { calcTokenValue } from '../../../../shared/lib/swaps-utils';
 import { BridgeQuoteCard } from '../quotes/bridge-quote-card';
-import { formatTokenAmount, isValidQuoteRequest } from '../utils/quote';
+import {
+  formatTokenAmount,
+  isQuoteExpired as isQuoteExpiredUtil,
+} from '../utils/quote';
+import { isValidQuoteRequest } from '../../../../shared/modules/bridge-utils/quote';
 import { getProviderConfig } from '../../../../shared/modules/selectors/networks';
 import {
   CrossChainSwapsEventProperties,
@@ -83,10 +87,11 @@ import useRamps from '../../../hooks/ramps/useRamps/useRamps';
 import { getNativeCurrency } from '../../../ducks/metamask/metamask';
 import useLatestBalance from '../../../hooks/bridge/useLatestBalance';
 import { useCountdownTimer } from '../../../hooks/bridge/useCountdownTimer';
-import { useBridgeTokens } from '../../../hooks/bridge/useBridgeTokens';
-import { getCurrentKeyring, getLocale } from '../../../selectors';
+import { getCurrentKeyring, getLocale, getTokenList } from '../../../selectors';
 import { isHardwareKeyring } from '../../../helpers/utils/hardware';
 import { SECOND } from '../../../../shared/constants/time';
+import { BRIDGE_QUOTE_MAX_RETURN_DIFFERENCE_PERCENTAGE } from '../../../../shared/constants/bridge';
+import { getMultichainIsSolana } from '../../../selectors/multichain';
 import { BridgeInputGroup } from './bridge-input-group';
 import { BridgeCTAButton } from './bridge-cta-button';
 
@@ -96,18 +101,13 @@ const PrepareBridgePage = () => {
   const t = useI18nContext();
 
   const fromToken = useSelector(getFromToken);
-  const {
-    fromTokens,
-    fromTopAssets,
-    isLoading: isFromTokensLoading,
-  } = useSelector(getFromTokens);
+  const fromTokens = useSelector(getTokenList) as TokenListMap;
+  const isFromTokensLoading = useMemo(
+    () => Object.keys(fromTokens).length === 0,
+    [fromTokens],
+  );
 
   const toToken = useSelector(getToToken);
-  const {
-    toTokens,
-    toTopAssets,
-    isLoading: isToTokensLoading,
-  } = useSelector(getToTokens);
 
   const fromChains = useSelector(getFromChains);
   const toChains = useSelector(getToChains);
@@ -121,12 +121,24 @@ const PrepareBridgePage = () => {
   const slippage = useSelector(getSlippage);
 
   const quoteRequest = useSelector(getQuoteRequest);
-  const { isLoading, activeQuote, isQuoteGoingToRefresh } =
-    useSelector(getBridgeQuotes);
-
+  const {
+    isLoading,
+    activeQuote: activeQuote_,
+    isQuoteGoingToRefresh,
+    quotesLastFetchedMs,
+  } = useSelector(getBridgeQuotes);
   const { refreshRate } = useSelector(getBridgeQuotesConfig);
 
   const wasTxDeclined = useSelector(getWasTxDeclined);
+  // If latest quote is expired and user has sufficient balance
+  // set activeQuote to undefined to hide stale quotes but keep inputs filled
+  const isQuoteExpired = isQuoteExpiredUtil(
+    isQuoteGoingToRefresh,
+    refreshRate,
+    quotesLastFetchedMs,
+  );
+  const activeQuote =
+    isQuoteExpired && !quoteRequest.insufficientBal ? undefined : activeQuote_;
 
   const keyring = useSelector(getCurrentKeyring);
   // @ts-expect-error keyring type is wrong maybe?
@@ -135,10 +147,12 @@ const PrepareBridgePage = () => {
 
   const ticker = useSelector(getNativeCurrency);
   const {
+    isEstimatedReturnLow,
     isNoQuotesAvailable,
     isInsufficientGasForQuote,
     isInsufficientBalance,
   } = useSelector(getValidationErrors);
+  const { quotesRefreshCount } = useSelector(getBridgeQuotes);
   const { openBuyCryptoInPdapp } = useRamps();
 
   const { balanceAmount: nativeAssetBalance } = useLatestBalance(
@@ -153,19 +167,10 @@ const PrepareBridgePage = () => {
     fromChain?.chainId,
   );
 
-  const tokenAddressAllowlistByChainId = useBridgeTokens();
-  const fromTokenListGenerator = useTokensWithFiltering(
-    fromTokens,
-    fromTopAssets,
-    tokenAddressAllowlistByChainId,
-    fromChain?.chainId,
-  );
-  const toTokenListGenerator = useTokensWithFiltering(
-    toTokens,
-    toTopAssets,
-    tokenAddressAllowlistByChainId,
-    toChain?.chainId,
-  );
+  const {
+    filteredTokenListGenerator: toTokenListGenerator,
+    isLoading: isToTokensLoading,
+  } = useTokensWithFiltering(toChain?.chainId);
 
   const { flippedRequestProperties } = useRequestProperties();
   const trackCrossChainSwapsEvent = useCrossChainSwapsEventTracker();
@@ -173,6 +178,10 @@ const PrepareBridgePage = () => {
   const millisecondsUntilNextRefresh = useCountdownTimer();
 
   const [rotateSwitchTokens, setRotateSwitchTokens] = useState(false);
+
+  // Resets the banner visibility when the estimated return is low
+  const [isLowReturnBannerOpen, setIsLowReturnBannerOpen] = useState(true);
+  useEffect(() => setIsLowReturnBannerOpen(true), [quotesRefreshCount]);
 
   // Background updates are debounced when the switch button is clicked
   // To prevent putting the frontend in an unexpected state, prevent the user
@@ -191,20 +200,61 @@ const PrepareBridgePage = () => {
   }, [rotateSwitchTokens]);
 
   useEffect(() => {
-    // Reset controller and inputs on load
-    dispatch(resetBridgeState());
+    // If there's an active quote, assume that the user is returning to the page
+    if (activeQuote) {
+      // Get input data from active quote
+      const { srcAsset, destAsset, destChainId, srcChainId } =
+        activeQuote.quote;
+      const quoteDestChainId = decimalToPrefixedHex(destChainId);
+      const quoteSrcChainId = decimalToPrefixedHex(srcChainId);
+
+      if (srcAsset && destAsset && quoteDestChainId) {
+        // Set inputs to values from active quote
+        dispatch(setToChainId(quoteDestChainId));
+        dispatch(
+          setToToken({
+            ...destAsset,
+            chainId: quoteDestChainId,
+            image: destAsset.icon,
+            address: destAsset.address.toLowerCase(),
+          }),
+        );
+        dispatch(
+          setFromToken({
+            ...srcAsset,
+            chainId: quoteSrcChainId,
+            image: srcAsset.icon,
+            address: srcAsset.address.toLowerCase(),
+          }),
+        );
+      }
+    } else {
+      // Reset controller and inputs on load
+      dispatch(resetBridgeState());
+    }
   }, []);
 
-  const scrollRef = useRef<HTMLDivElement>(null);
-
+  // Scroll to bottom of the page when banners are shown
+  const insufficientBalanceBannerRef = useRef<HTMLDivElement>(null);
+  const isEstimatedReturnLowRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
     if (isInsufficientGasForQuote(nativeAssetBalance)) {
-      scrollRef.current?.scrollIntoView({
+      insufficientBalanceBannerRef.current?.scrollIntoView({
         behavior: 'smooth',
         block: 'start',
       });
     }
-  }, [isInsufficientGasForQuote(nativeAssetBalance)]);
+    if (isEstimatedReturnLow) {
+      isEstimatedReturnLowRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }
+  }, [
+    isEstimatedReturnLow,
+    isInsufficientGasForQuote(nativeAssetBalance),
+    isLowReturnBannerOpen,
+  ]);
 
   const quoteParams = useMemo(
     () => ({
@@ -269,7 +319,7 @@ const PrepareBridgePage = () => {
   const history = useHistory();
 
   useEffect(() => {
-    if (!fromChain?.chainId || Object.keys(fromTokens).length === 0) {
+    if (!fromChain?.chainId || isFromTokensLoading) {
       return;
     }
 
@@ -293,10 +343,14 @@ const PrepareBridgePage = () => {
         removeTokenFromUrl();
         break;
       case fromTokens[tokenAddressFromUrl]?.address?.toLowerCase(): {
-        // If there is a matching fromToken, set it as the fromToken
+        // If there is a match, set it as the fromToken
         const matchedToken = fromTokens[tokenAddressFromUrl];
         dispatch(
-          setFromToken({ ...matchedToken, image: matchedToken.iconUrl }),
+          setFromToken({
+            ...matchedToken,
+            image: matchedToken.iconUrl,
+            chainId: fromChain.chainId,
+          }),
         );
         removeTokenFromUrl();
         break;
@@ -306,7 +360,9 @@ const PrepareBridgePage = () => {
         removeTokenFromUrl();
         break;
     }
-  }, [fromChain, fromToken, fromTokens, search]);
+  }, [fromChain, fromToken, fromTokens, search, isFromTokensLoading]);
+
+  const isSolana = useSelector(getMultichainIsSolana);
 
   return (
     <Column className="prepare-bridge-page" gap={8}>
@@ -324,8 +380,6 @@ const PrepareBridgePage = () => {
               input: 'token_source',
               value: token.address,
             });
-          dispatch(setFromToken(token));
-          dispatch(setFromTokenInputValue(null));
         }}
         networkProps={{
           network: fromChain,
@@ -349,16 +403,12 @@ const PrepareBridgePage = () => {
                 ),
               );
             }
-            dispatch(setFromChain(networkConfig.chainId));
             dispatch(setFromToken(null));
             dispatch(setFromTokenInputValue(null));
           },
           header: t('yourNetworks'),
         }}
         isMultiselectEnabled
-        customTokenListGenerator={
-          fromTokens && fromTopAssets ? fromTokenListGenerator : undefined
-        }
         onMaxButtonClick={(value: string) => {
           dispatch(setFromTokenInputValue(value));
         }}
@@ -433,10 +483,7 @@ const PrepareBridgePage = () => {
                       .networkClientId
                   : undefined;
               toChainClientId && dispatch(setActiveNetwork(toChainClientId));
-              toChain && dispatch(setFromChain(toChain.chainId));
               dispatch(setFromToken(toToken));
-              dispatch(setFromTokenInputValue(null));
-              fromChain?.chainId && dispatch(setToChain(fromChain.chainId));
               fromChain?.chainId && dispatch(setToChainId(fromChain.chainId));
               dispatch(setToToken(fromToken));
             }}
@@ -464,18 +511,13 @@ const PrepareBridgePage = () => {
                   value: networkConfig.chainId,
                 });
               dispatch(setToChainId(networkConfig.chainId));
-              dispatch(setToChain(networkConfig.chainId));
               dispatch(setToToken(null));
             },
-            header: t('bridgeTo'),
+            header: isSolana ? t('swapSwapTo') : t('bridgeTo'),
             shouldDisableNetwork: ({ chainId }) =>
               chainId === fromChain?.chainId,
           }}
-          customTokenListGenerator={
-            toChain && toTokens && toTopAssets
-              ? toTokenListGenerator
-              : undefined
-          }
+          customTokenListGenerator={toChain ? toTokenListGenerator : undefined}
           amountInFiat={
             activeQuote?.toTokenAmount?.valueInCurrency || undefined
           }
@@ -533,9 +575,13 @@ const PrepareBridgePage = () => {
                 backgroundColor={BackgroundColor.primaryMuted}
               />
             )}
-            {!wasTxDeclined && <BridgeQuoteCard />}
+            {!wasTxDeclined && activeQuote && <BridgeQuoteCard />}
             <Footer padding={0} flexDirection={FlexDirection.Column} gap={2}>
-              <BridgeCTAButton />
+              <BridgeCTAButton
+                onFetchNewQuotes={() => {
+                  debouncedUpdateQuoteRequestInController(quoteParams);
+                }}
+              />
               {activeQuote?.approval && fromAmount && fromToken ? (
                 <Row justifyContent={JustifyContent.center} gap={1}>
                   <Text
@@ -585,12 +631,26 @@ const PrepareBridgePage = () => {
             textAlign={TextAlign.Left}
           />
         )}
+        {isEstimatedReturnLow && isLowReturnBannerOpen && (
+          <BannerAlert
+            ref={insufficientBalanceBannerRef}
+            marginInline={4}
+            marginBottom={3}
+            title={t('lowEstimatedReturnTooltipTitle')}
+            severity={BannerAlertSeverity.Warning}
+            description={t('lowEstimatedReturnTooltipMessage', [
+              BRIDGE_QUOTE_MAX_RETURN_DIFFERENCE_PERCENTAGE * 100,
+            ])}
+            textAlign={TextAlign.Left}
+            onClose={() => setIsLowReturnBannerOpen(false)}
+          />
+        )}
         {!isLoading &&
           activeQuote &&
           !isInsufficientBalance(srcTokenBalance) &&
           isInsufficientGasForQuote(nativeAssetBalance) && (
             <BannerAlert
-              ref={scrollRef}
+              ref={isEstimatedReturnLowRef}
               marginInline={4}
               marginBottom={3}
               title={t('bridgeValidationInsufficientGasTitle', [ticker])}

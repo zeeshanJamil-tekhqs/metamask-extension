@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
 import { providerErrors, serializeError } from '@metamask/rpc-errors';
 import { SubjectType } from '@metamask/permission-controller';
+import { isSnapId } from '@metamask/snaps-utils';
 // TODO: Remove restricted import
 // eslint-disable-next-line import/no-restricted-paths
 import { isEthAddress } from '../../../app/scripts/lib/multichain/address';
@@ -19,7 +20,6 @@ import {
 // TODO: Remove restricted import
 // eslint-disable-next-line import/no-restricted-paths
 import { PermissionNames } from '../../../app/scripts/controllers/permissions';
-import { isSnapId } from '../../helpers/utils/snaps';
 import ChooseAccount from './choose-account';
 import PermissionsRedirect from './redirect';
 import SnapsConnect from './snaps/snaps-connect';
@@ -48,6 +48,11 @@ function getDefaultSelectedAccounts(currentAddress, permissionsRequest) {
 
   // We only consider EVM accounts here (used for `eth_requestAccounts` or `eth_accounts`)
   return new Set(isEthAddress(currentAddress) ? [currentAddress] : []);
+}
+
+function getRequestedChainIds(permissionsRequest) {
+  return permissionsRequest?.permissions?.[PermissionNames.permittedChains]
+    ?.caveats[0]?.value;
 }
 
 export default class PermissionConnect extends Component {
@@ -151,16 +156,6 @@ export default class PermissionConnect extends Component {
       history.replace(DEFAULT_ROUTE);
       return;
     }
-
-    // if this is an incremental permission request for permitted chains, skip the account selection
-    if (
-      permissionsRequest?.diff?.permissionDiffMap?.[
-        PermissionNames.permittedChains
-      ]
-    ) {
-      history.replace(confirmPermissionPath);
-    }
-
     if (history.location.pathname === connectPath && !isRequestingAccounts) {
       switch (requestType) {
         case 'wallet_installSnap':
@@ -408,6 +403,7 @@ export default class PermissionConnect extends Component {
                   selectedAccounts={accounts.filter((account) =>
                     selectedAccountAddresses.has(account.address),
                   )}
+                  requestedChainIds={getRequestedChainIds(permissionsRequest)}
                   targetSubjectMetadata={targetSubjectMetadata}
                   history={history}
                   connectPath={connectPath}
