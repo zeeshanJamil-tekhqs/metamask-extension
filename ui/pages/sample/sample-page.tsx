@@ -1,24 +1,24 @@
 import React, { useCallback, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import {
   AlignItems,
   BackgroundColor,
   IconColor,
   TextAlign,
   TextVariant,
-} from '../../../helpers/constants/design-system';
+} from '../../helpers/constants/design-system';
 import {
   Button,
   ButtonIcon,
   ButtonIconSize,
   IconName,
   Text,
-} from '../../component-library';
-import { Content, Header, Page } from '../../multichain/pages/page';
-import { DEFAULT_ROUTE } from '../../../helpers/constants/routes';
-import { useHistory } from 'react-router-dom';
-import { useI18nContext } from '../../../hooks/useI18nContext';
-import { useSample } from '../../../hooks/sample/useSample';
-import { useSampleContext } from '../../../hooks/sample/useSampleContext';
+} from '../../components/component-library';
+import { Content, Header, Page } from '../../components/multichain/pages/page';
+import { DEFAULT_ROUTE } from '../../helpers/constants/routes';
+import { useI18nContext } from '../../hooks/useI18nContext';
+import { useSample } from '../../hooks/sample/useSample';
+import { useSampleContext } from '../../hooks/sample/useSampleContext';
 
 export function SamplePage() {
   const t = useI18nContext();
@@ -61,7 +61,7 @@ export function SamplePage() {
           variant={TextVariant.headingMd}
           textAlign={TextAlign.Center}
         >
-          Sample Page
+          Sample Page 2
         </Text>
       </Header>
       <Content alignItems={AlignItems.center} gap={2}>

@@ -13,7 +13,7 @@ import bridgeReducer from './bridge/bridge';
 import historyReducer from './history/history';
 import rampsReducer from './ramps/ramps';
 import confirmAlertsReducer from './confirm-alerts/confirm-alerts';
-import sampleReducer from './sample/sample';
+import sampleReducer from './sample';
 
 export default combineReducers({
   [AlertTypes.invalidCustomNetwork]: invalidCustomNetwork,

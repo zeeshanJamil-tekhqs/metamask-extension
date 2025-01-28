@@ -94,7 +94,7 @@ import {
   isCorrectDeveloperTransactionType,
   isCorrectSignatureApprovalType,
 } from '../../../shared/lib/confirmation.utils';
-import { SamplePage } from '../../components/app/sample/sample-page';
+import { SamplePage } from '../sample/sample-page';
 import {
   getConnectingLabel,
   hideAppHeader,

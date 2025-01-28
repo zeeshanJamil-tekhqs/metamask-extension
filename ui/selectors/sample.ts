@@ -1,5 +1,5 @@
 import { createSelector } from 'reselect';
-import { SampleGlobalState } from '../ducks/sample/sample';
+import { SampleGlobalState } from '../ducks/sample';
 
 type State = {
   sample: SampleGlobalState;

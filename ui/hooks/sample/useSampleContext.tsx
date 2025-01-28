@@ -16,7 +16,11 @@ export const SampleContext = createContext<SampleContexType | undefined>(
   undefined,
 );
 
-export function SampleContextProvider({ children }: { children: ReactElement }) {
+export function SampleContextProvider({
+  children,
+}: {
+  children: ReactElement;
+}) {
   const [counter, setCounter] = useState(0);
 
   const updateCounter = useCallback((amount: number) => {
@@ -31,9 +35,10 @@ export function SampleContextProvider({ children }: { children: ReactElement }) 
     [counter],
   );
 
-  return <SampleContext.Provider value={value}>{children}</SampleContext.Provider>
-
-};
+  return (
+    <SampleContext.Provider value={value}>{children}</SampleContext.Provider>
+  );
+}
 
 export function useSampleContext(): SampleContexType {
   const context = useContext(SampleContext);
@@ -45,4 +50,4 @@ export function useSampleContext(): SampleContexType {
   }
 
   return context;
-};
+}
