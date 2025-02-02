@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import EventEmitter from 'events';
 import React, { useState, useEffect, useRef, useContext } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -170,12 +171,13 @@ export default function LoadingSwapsQuotes({
             className="loading-swaps-quotes__mascot-container"
             ref={mascotContainer}
           >
-            <Mascot
+            {/* <Mascot
               animationEventEmitter={animationEventEmitter.current}
               width="90"
               height="90"
               lookAtTarget={midPointTarget}
-            />
+            /> */}
+            <img width="90" height="90" src="./images/logo/metamask-fox.svg" />
           </div>
         </div>
       </div>

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { PureComponent } from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
@@ -75,7 +76,7 @@ export default class MetaFoxLogo extends PureComponent {
       >
         {renderHorizontalLogo()}
 
-        <img
+        {/* <img
           {...iconProps}
           src={imageSrc}
           className={classnames({
@@ -83,7 +84,7 @@ export default class MetaFoxLogo extends PureComponent {
             'onboarding-app-header__metafox-logo--icon': isOnboarding,
           })}
           alt=""
-        />
+        /> */}
       </Box>
     );
   }

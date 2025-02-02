@@ -121,7 +121,7 @@
     "message": "Access your wallet with your Secret Recovery Phrase"
   },
   "accessYourWalletWithSRPDescription": {
-    "message": "MetaMask cannot recover your password. We will use your Secret Recovery Phrase to validate your ownership, restore your wallet and set up a new password. First, enter the Secret Recovery Phrase that you were given when you created your wallet. $1",
+    "message": "Bryt cannot recover your password. We will use your Secret Recovery Phrase to validate your ownership, restore your wallet and set up a new password. First, enter the Secret Recovery Phrase that you were given when you created your wallet. $1",
     "description": "$1 is the words 'Learn More' from key 'learnMore', separated here so that it can be added as a link"
   },
   "accessingYourCamera": {
@@ -210,11 +210,11 @@
   "addAccount": {
     "message": "Add account"
   },
-  "addAccountToMetaMask": {
-    "message": "Add account to MetaMask"
+  "addAccountToBryt": {
+    "message": "Add account to Bryt"
   },
   "addAcquiredTokens": {
-    "message": "Add the tokens you've acquired using MetaMask"
+    "message": "Add the tokens you've acquired using Bryt"
   },
   "addAlias": {
     "message": "Add alias"
@@ -383,7 +383,7 @@
     "description": "$1 represents the settings page"
   },
   "agreeTermsOfUse": {
-    "message": "I agree to MetaMask's $1",
+    "message": "I agree to Bryt's $1",
     "description": "$1 is the `terms` link"
   },
   "airgapVault": {
@@ -544,19 +544,19 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Bryt",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Bryt Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Bryt Flask",
     "description": "The name of the application (Flask)"
   },
   "appNameMmi": {
-    "message": "MetaMask Institutional",
+    "message": "Bryt Institutional",
     "description": "The name of the application (MMI)"
   },
   "apply": {
@@ -656,7 +656,7 @@
     "message": "Auto-lock timer (minutes)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Set the idle time in minutes before MetaMask will become locked."
+    "message": "Set the idle time in minutes before Bryt will become locked."
   },
   "average": {
     "message": "Average"
@@ -665,7 +665,7 @@
     "message": "Back"
   },
   "backupApprovalInfo": {
-    "message": "This secret code is required to recover your wallet in case you lose your device, forget your password, have to re-install MetaMask, or want to access your wallet on another device."
+    "message": "This secret code is required to recover your wallet in case you lose your device, forget your password, have to re-install Bryt, or want to access your wallet on another device."
   },
   "backupApprovalNotice": {
     "message": "Back up your Secret Recovery Phrase to keep your wallet and funds secure."
@@ -695,7 +695,7 @@
     "message": "Basic functionality is off"
   },
   "basicConfigurationDescription": {
-    "message": "MetaMask offers basic features like token details and gas settings through internet services. When you use internet services, your IP address is shared, in this case with MetaMask. This is just like when you visit any website. MetaMask uses this data temporarily and never sells your data. You can use a VPN or turn off these services, but it may affect your MetaMask experience. To learn more read our $1.",
+    "message": "Bryt offers basic features like token details and gas settings through internet services. When you use internet services, your IP address is shared, in this case with Bryt. This is just like when you visit any website. Bryt uses this data temporarily and never sells your data. You can use a VPN or turn off these services, but it may affect your Bryt experience. To learn more read our $1.",
     "description": "$1 is to be replaced by the message for privacyMsg, and will link to https://consensys.io/privacy-policy"
   },
   "basicConfigurationLabel": {
@@ -705,10 +705,10 @@
     "message": "I understand and want to continue"
   },
   "basicConfigurationModalDisclaimerOff": {
-    "message": "This means you won't fully optimize your time on MetaMask. Basic features (like token details, optimal gas settings, and others) won't be available to you."
+    "message": "This means you won't fully optimize your time on Bryt. Basic features (like token details, optimal gas settings, and others) won't be available to you."
   },
   "basicConfigurationModalDisclaimerOn": {
-    "message": "To optimize your time on MetaMask, you’ll need to turn on this feature. Basic functions (like token details, optimal gas settings, and others) are important to the web3 experience."
+    "message": "To optimize your time on Bryt, you’ll need to turn on this feature. Basic functions (like token details, optimal gas settings, and others) are important to the web3 experience."
   },
   "basicConfigurationModalHeadingOff": {
     "message": "Turn off basic functionality"
@@ -729,7 +729,7 @@
     "message": "This is a beta version. Please report bugs $1"
   },
   "betaMetamaskVersion": {
-    "message": "MetaMask Beta Version"
+    "message": "Bryt Beta Version"
   },
   "betaTerms": {
     "message": "Beta Terms of use"
@@ -742,7 +742,7 @@
     "message": "Bitcoin"
   },
   "bitcoinSupportToggleDescription": {
-    "message": "Turning on this feature will give you the option to add a Bitcoin Account to your MetaMask Extension derived from your existing Secret Recovery Phrase. This is an experimental Beta feature, so you should use it at your own risk. To give us feedback on this new Bitcoin experience, please fill out this $1.",
+    "message": "Turning on this feature will give you the option to add a Bitcoin Account to your Bryt Extension derived from your existing Secret Recovery Phrase. This is an experimental Beta feature, so you should use it at your own risk. To give us feedback on this new Bitcoin experience, please fill out this $1.",
     "description": "$1 is the link to a product feedback form"
   },
   "bitcoinSupportToggleTitle": {
@@ -914,7 +914,7 @@
     "message": "Reach out to"
   },
   "bridgeTxDetailsDelayedDescriptionSupport": {
-    "message": "MetaMask Support"
+    "message": "Bryt Support"
   },
   "bridgeTxDetailsDelayedTitle": {
     "message": "Has it been longer than 3 hours?"
@@ -961,7 +961,7 @@
     "message": "Build your contact list"
   },
   "builtAroundTheWorld": {
-    "message": "MetaMask is designed and built around the world."
+    "message": "Bryt is designed and built around the world."
   },
   "bulletpoint": {
     "message": "·"
@@ -1029,7 +1029,7 @@
     "description": "$1 is a link to the privacy policy"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "You need to use MetaMask on Google Chrome in order to connect to your Hardware Wallet."
+    "message": "You need to use Bryt on Google Chrome in order to connect to your Hardware Wallet."
   },
   "circulatingSupply": {
     "message": "Circulating supply"
@@ -1073,10 +1073,10 @@
     "description": "Default text shown in the combo field dropdown if no options."
   },
   "configureSnapPopupDescription": {
-    "message": "You're now leaving MetaMask to configure this snap."
+    "message": "You're now leaving Bryt to configure this snap."
   },
   "configureSnapPopupInstallDescription": {
-    "message": "You're now leaving MetaMask to install this snap."
+    "message": "You're now leaving Bryt to install this snap."
   },
   "configureSnapPopupInstallTitle": {
     "message": "Install snap"
@@ -1193,8 +1193,8 @@
     "message": "Connect $1",
     "description": "$1 is the snap for which a connection is being requested."
   },
-  "connectWithMetaMask": {
-    "message": "Connect with MetaMask"
+  "connectWithBryt": {
+    "message": "Connect with Bryt"
   },
   "connectedAccounts": {
     "message": "Connected accounts"
@@ -1207,7 +1207,7 @@
     "message": "You have 1 account connected to this site."
   },
   "connectedAccountsEmptyDescription": {
-    "message": "MetaMask is not connected to this site. To connect to a web3 site, find and click the connect button."
+    "message": "Bryt is not connected to this site. To connect to a web3 site, find and click the connect button."
   },
   "connectedAccountsListTooltip": {
     "message": "$1 can see the account balance, address, activity, and suggest transactions to approve for connected accounts.",
@@ -1231,7 +1231,7 @@
     "description": "$1 is the account name"
   },
   "connectedSnapAndNoAccountDescription": {
-    "message": "MetaMask is connected to this site, but no accounts are connected yet"
+    "message": "Bryt is connected to this site, but no accounts are connected yet"
   },
   "connectedSnaps": {
     "message": "Connected Snaps"
@@ -1342,7 +1342,7 @@
     "message": "Token contract"
   },
   "convertTokenToNFTDescription": {
-    "message": "We've detected that this asset is an NFT. MetaMask now has full native support for NFTs. Would you like to remove it from your token list and add it as an NFT?"
+    "message": "We've detected that this asset is an NFT. Bryt now has full native support for NFTs. Would you like to remove it from your token list and add it as an NFT?"
   },
   "convertTokenToNFTExistDescription": {
     "message": "We’ve detected that this asset has been added as an NFT. Would you like to remove it from your token list?"
@@ -1381,7 +1381,7 @@
     "message": "Create password"
   },
   "createSnapAccountDescription": {
-    "message": "$1 wants to add a new account to MetaMask."
+    "message": "$1 wants to add a new account to Bryt."
   },
   "createSnapAccountTitle": {
     "message": "Create account"
@@ -1394,7 +1394,7 @@
     "description": "$1 represents the settings page"
   },
   "crossChainSwapsLink": {
-    "message": "Swap across networks with MetaMask Portfolio"
+    "message": "Swap across networks with Bryt Portfolio"
   },
   "crossChainSwapsLinkNative": {
     "message": "Swap across networks with Bridge"
@@ -1525,7 +1525,7 @@
     "message": "Okay"
   },
   "dataCollectionWarningPopoverDescription": {
-    "message": "You turned off data collection for our marketing purposes. This only applies to this device. If you use MetaMask on other devices, make sure to opt out there as well."
+    "message": "You turned off data collection for our marketing purposes. This only applies to this device. If you use Bryt on other devices, make sure to opt out there as well."
   },
   "dataHex": {
     "message": "Hex"
@@ -1572,7 +1572,7 @@
     "message": "Default RPC URL"
   },
   "defaultSettingsSubTitle": {
-    "message": "MetaMask uses default settings to best balance safety and ease of use. Change these settings to further increase your privacy."
+    "message": "Bryt uses default settings to best balance safety and ease of use. Change these settings to further increase your privacy."
   },
   "defaultSettingsTitle": {
     "message": "Default privacy settings"
@@ -1897,13 +1897,13 @@
     "message": "Enhanced token detection is currently available on $1. $2"
   },
   "ensDomainsSettingDescriptionIntroduction": {
-    "message": "MetaMask lets you see ENS domains right in your browser's address bar. Here's how it works:"
+    "message": "Bryt lets you see ENS domains right in your browser's address bar. Here's how it works:"
   },
   "ensDomainsSettingDescriptionOutroduction": {
     "message": "Keep in mind that using this feature exposes your IP address to IPFS third-party services."
   },
   "ensDomainsSettingDescriptionPart1": {
-    "message": "MetaMask checks with Ethereum's ENS contract to find the code connected to the ENS name."
+    "message": "Bryt checks with Ethereum's ENS contract to find the code connected to the ENS name."
   },
   "ensDomainsSettingDescriptionPart2": {
     "message": "If the code links to IPFS, you can see the content associated with it (usually a website)."
@@ -1991,7 +1991,7 @@
     "description": "In sentry feedback form, The message displayed after a successful feedback submission."
   },
   "errorPageTitle": {
-    "message": "MetaMask encountered an error",
+    "message": "Bryt encountered an error",
     "description": "Title of generic error page"
   },
   "errorPageTryAgain": {
@@ -2100,15 +2100,15 @@
   },
   "flaskWelcomeWarning2": {
     "message": "We do not guarantee the safety or stability of this extension. The new APIs offered by Flask are not hardened against phishing attacks, meaning that any site or snap that requires Flask might be a malicious attempt to steal your assets.",
-    "description": "This explains the risks of using MetaMask Flask"
+    "description": "This explains the risks of using Bryt Flask"
   },
   "flaskWelcomeWarning3": {
-    "message": "All Flask APIs are experimental. They may be changed or removed without notice, or they might stay on Flask indefinitely without ever being migrated to stable MetaMask. Use them at your own risk.",
+    "message": "All Flask APIs are experimental. They may be changed or removed without notice, or they might stay on Flask indefinitely without ever being migrated to stable Bryt. Use them at your own risk.",
     "description": "This message warns developers about unstable Flask APIs"
   },
   "flaskWelcomeWarning4": {
-    "message": "Make sure to disable your regular MetaMask extension when using Flask.",
-    "description": "This message calls to pay attention about multiple versions of MetaMask running on the same site (Flask + Prod)"
+    "message": "Make sure to disable your regular Bryt extension when using Flask.",
+    "description": "This message calls to pay attention about multiple versions of Bryt running on the same site (Flask + Prod)"
   },
   "flaskWelcomeWarningAcceptButton": {
     "message": "I accept the risks",
@@ -2284,7 +2284,7 @@
     "message": "Hardware wallet integrations use API calls to external servers, which can see your IP address and the smart contract addresses you interact with."
   },
   "hardwareWalletsMsg": {
-    "message": "Select a hardware wallet you would like to use with MetaMask."
+    "message": "Select a hardware wallet you would like to use with Bryt."
   },
   "here": {
     "message": "here",
@@ -2353,7 +2353,7 @@
     "description": "$1 is a message from 'holdToRevealContent4' and $2 is a text link with the message from 'holdToRevealContent5'"
   },
   "holdToRevealContent4": {
-    "message": "MetaMask Support will not request this,",
+    "message": "Bryt Support will not request this,",
     "description": "Part of 'holdToRevealContent3'"
   },
   "holdToRevealContent5": {
@@ -2390,7 +2390,7 @@
     "message": "How quotes work"
   },
   "howQuotesWorkExplanation": {
-    "message": "This quote has the best return of the quotes we searched. This is based on the swap rate, which includes bridging fees and a $1% MetaMask fee, minus gas fees. Gas fees depend on how busy the network is and how complex the transaction is."
+    "message": "This quote has the best return of the quotes we searched. This is based on the swap rate, which includes bridging fees and a $1% Bryt fee, minus gas fees. Gas fees depend on how busy the network is and how complex the transaction is."
   },
   "id": {
     "message": "ID"
@@ -2428,13 +2428,13 @@
     "message": "This is not a valid private key. You must enter a hexadecimal string of length 64."
   },
   "importAccountJsonLoading1": {
-    "message": "Expect this JSON import to take a few minutes and freeze MetaMask."
+    "message": "Expect this JSON import to take a few minutes and freeze Bryt."
   },
   "importAccountJsonLoading2": {
     "message": "We apologize, and we will make it faster in the future."
   },
   "importAccountMsg": {
-    "message": "Imported accounts won’t be associated with your MetaMask Secret Recovery Phrase. Learn more about imported accounts"
+    "message": "Imported accounts won’t be associated with your Bryt Secret Recovery Phrase. Learn more about imported accounts"
   },
   "importMyWallet": {
     "message": "Import my wallet"
@@ -2484,7 +2484,7 @@
     "message": "included"
   },
   "infuraBlockedNotification": {
-    "message": "MetaMask is unable to connect to the blockchain host. Review possible reasons $1.",
+    "message": "Bryt is unable to connect to the blockchain host. Review possible reasons $1.",
     "description": "$1 is a clickable link with with text defined by the 'here' key"
   },
   "initialTransactionConfirmed": {
@@ -2532,7 +2532,7 @@
     "message": "Install origin"
   },
   "installRequest": {
-    "message": "Add to MetaMask"
+    "message": "Add to Bryt"
   },
   "installedOn": {
     "message": "Installed on $1",
@@ -2622,7 +2622,7 @@
     "message": "IPFS gateway"
   },
   "ipfsGatewayDescription": {
-    "message": "MetaMask uses third-party services to show images of your NFTs stored on IPFS, display information related to ENS addresses entered in your browser's address bar, and fetch icons for different tokens. Your IP address may be exposed to these services when you’re using them."
+    "message": "Bryt uses third-party services to show images of your NFTs stored on IPFS, display information related to ENS addresses entered in your browser's address bar, and fetch icons for different tokens. Your IP address may be exposed to these services when you’re using them."
   },
   "ipfsToggleModalDescriptionOne": {
     "message": "We use third-party services to show images of your NFTs stored on IPFS, display information related to ENS addresses entered in your browser's address bar, and fetch icons for different tokens. Your IP address may be exposed to these services when you’re using them."
@@ -2734,11 +2734,11 @@
   "learnScamRisk": {
     "message": "scams and security risks."
   },
-  "leaveMetaMask": {
-    "message": "Leave MetaMask?"
+  "leaveBryt": {
+    "message": "Leave Bryt?"
   },
-  "leaveMetaMaskDesc": {
-    "message": "You're about to visit a site outside of MetaMask. Double-check the URL before continuing."
+  "leaveBrytDesc": {
+    "message": "You're about to visit a site outside of Bryt. Double-check the URL before continuing."
   },
   "ledgerAccountRestriction": {
     "message": "You need to make use your last account before you can add a new one."
@@ -2808,7 +2808,7 @@
     "message": "Link"
   },
   "linkCentralizedExchanges": {
-    "message": "Link your Coinbase or Binance accounts to transfer crypto to MetaMask for free."
+    "message": "Link your Coinbase or Binance accounts to transfer crypto to Bryt for free."
   },
   "links": {
     "message": "Links"
@@ -2834,8 +2834,8 @@
   "lock": {
     "message": "Lock"
   },
-  "lockMetaMask": {
-    "message": "Lock MetaMask"
+  "lockBryt": {
+    "message": "Lock Bryt"
   },
   "lockTimeInvalid": {
     "message": "Lock time must be a number between 0 and 10080"
@@ -2914,7 +2914,7 @@
     "message": "Message"
   },
   "metaMaskConnectStatusParagraphOne": {
-    "message": "You now have more control over your account connections in MetaMask."
+    "message": "You now have more control over your account connections in Bryt."
   },
   "metaMaskConnectStatusParagraphThree": {
     "message": "Click it to manage your connected accounts."
@@ -2933,10 +2933,10 @@
     "message": "Wallet notifications are currently not active."
   },
   "metamaskSwapsOfflineDescription": {
-    "message": "MetaMask Swaps is undergoing maintenance. Please check back later."
+    "message": "Bryt Swaps is undergoing maintenance. Please check back later."
   },
   "metamaskVersion": {
-    "message": "MetaMask Version"
+    "message": "Bryt Version"
   },
   "methodData": {
     "message": "Method"
@@ -2995,7 +2995,7 @@
     "message": "More quotes"
   },
   "multichainAddEthereumChainConfirmationDescription": {
-    "message": "You're adding this network to MetaMask and giving this site permission to use it."
+    "message": "You're adding this network to Bryt and giving this site permission to use it."
   },
   "multipleSnapConnectionWarning": {
     "message": "$1 wants to use $2 Snaps",
@@ -3060,7 +3060,7 @@
     "message": "Lens Protocol"
   },
   "nameProvider_token": {
-    "message": "MetaMask"
+    "message": "Bryt"
   },
   "nameSetPlaceholder": {
     "message": "Choose a nickname...",
@@ -3093,7 +3093,7 @@
     "message": "Share your feedback"
   },
   "needHelpLinkText": {
-    "message": "MetaMask support"
+    "message": "Bryt support"
   },
   "needHelpSubmitTicket": {
     "message": "Submit a ticket"
@@ -3248,7 +3248,7 @@
     "description": "$1 is used for newNFTDetectedInImportNFTsMessageStrongText"
   },
   "newNFTDetectedInNFTsTabMessage": {
-    "message": "Let MetaMask automatically detect and display NFTs in your wallet."
+    "message": "Let Bryt automatically detect and display NFTs in your wallet."
   },
   "newNFTsAutodetected": {
     "message": "NFT autodetection"
@@ -3286,7 +3286,7 @@
   },
   "nextNonceWarning": {
     "message": "Nonce is higher than suggested nonce of $1",
-    "description": "The next nonce according to MetaMask's internal logic"
+    "description": "The next nonce according to Bryt's internal logic"
   },
   "nftAddFailedMessage": {
     "message": "NFT can’t be added as the ownership details do not match. Make sure you have entered correct information."
@@ -3302,7 +3302,7 @@
     "message": "NFT autodetection enabled"
   },
   "nftDisclaimer": {
-    "message": "Disclaimer: MetaMask pulls the media file from the source url. This url sometimes gets changed by the marketplace on which the NFT was minted."
+    "message": "Disclaimer: Bryt pulls the media file from the source url. This url sometimes gets changed by the marketplace on which the NFT was minted."
   },
   "nftOptions": {
     "message": "NFT Options"
@@ -3334,10 +3334,10 @@
     "message": "No accounts found for the given search query"
   },
   "noConnectedAccountTitle": {
-    "message": "MetaMask isn’t connected to this site"
+    "message": "Bryt isn’t connected to this site"
   },
   "noConnectionDescription": {
-    "message": "To connect to a site, find and select the \"connect\" button. Remember MetaMask can only connect to sites on web3"
+    "message": "To connect to a site, find and select the \"connect\" button. Remember Bryt can only connect to sites on web3"
   },
   "noConversionRateAvailable": {
     "message": "No conversion rate available"
@@ -3532,8 +3532,8 @@
     "message": "Notifications"
   },
   "notificationsDropLedgerFirefoxDescription": {
-    "message": "Firefox no longer supports U2F, so Ledger won't work with MetaMask on Firefox. Try MetaMask on Google Chrome instead.",
-    "description": "Description of a notification in the 'See What's New' popup. Describes that ledger will not longer be supported for firefox users and they should use MetaMask on chrome for ledger support instead."
+    "message": "Firefox no longer supports U2F, so Ledger won't work with Bryt on Firefox. Try Bryt on Google Chrome instead.",
+    "description": "Description of a notification in the 'See What's New' popup. Describes that ledger will not longer be supported for firefox users and they should use Bryt on chrome for ledger support instead."
   },
   "notificationsDropLedgerFirefoxTitle": {
     "message": "Dropping Ledger Support for Firefox",
@@ -3655,7 +3655,7 @@
     "message": "I agree"
   },
   "onboardingMetametricsDescription": {
-    "message": "We’d like to gather basic usage and diagnostics data to improve MetaMask. Know that we never sell the data you provide here."
+    "message": "We’d like to gather basic usage and diagnostics data to improve Bryt. Know that we never sell the data you provide here."
   },
   "onboardingMetametricsDescription2": {
     "message": "When we gather metrics, it will always be..."
@@ -3692,7 +3692,7 @@
     "message": "Learn how we protect your privacy while collecting usage data for your profile."
   },
   "onboardingMetametricsTitle": {
-    "message": "Help us improve MetaMask"
+    "message": "Help us improve Bryt"
   },
   "onboardingMetametricsUseDataCheckbox": {
     "message": "We’ll use this data to learn how you interact with our marketing communications. We may share relevant news (like product features)."
@@ -3713,16 +3713,16 @@
     "message": "Click the browser extension icon"
   },
   "onboardingPinExtensionDescription": {
-    "message": "Pin MetaMask on your browser so it's accessible and easy to view transaction confirmations."
+    "message": "Pin Bryt on your browser so it's accessible and easy to view transaction confirmations."
   },
   "onboardingPinExtensionDescription2": {
-    "message": "You can open MetaMask by clicking on the extension and access your wallet with 1 click."
+    "message": "You can open Bryt by clicking on the extension and access your wallet with 1 click."
   },
   "onboardingPinExtensionDescription3": {
     "message": "Click browser extension icon to access it instantly"
   },
   "onboardingPinExtensionLabel": {
-    "message": "Pin MetaMask"
+    "message": "Pin Bryt"
   },
   "onboardingPinExtensionStep1": {
     "message": "1"
@@ -3731,7 +3731,7 @@
     "message": "2"
   },
   "onboardingPinExtensionTitle": {
-    "message": "Your MetaMask install is complete!"
+    "message": "Your Bryt install is complete!"
   },
   "oneDayAbbreviation": {
     "message": "1D",
@@ -3758,7 +3758,7 @@
   },
   "openFullScreenForLedgerWebHid": {
     "message": "Go to full screen to connect your Ledger.",
-    "description": "Shown to the user on the confirm screen when they are viewing MetaMask in a popup window but need to connect their ledger via webhid."
+    "description": "Shown to the user on the confirm screen when they are viewing Bryt in a popup window but need to connect their ledger via webhid."
   },
   "openInBlockExplorer": {
     "message": "Open in block explorer"
@@ -3783,7 +3783,7 @@
     "description": "Used in the 'permission_rpc' message."
   },
   "outdatedBrowserNotification": {
-    "message": "Your browser is out of date. If you don't update your browser, you won't be able to get security patches and new features from MetaMask."
+    "message": "Your browser is out of date. If you don't update your browser, you won't be able to get security patches and new features from Bryt."
   },
   "overrideContentSecurityPolicyHeader": {
     "message": "Override Content-Security-Policy header"
@@ -3801,7 +3801,7 @@
     "message": "Participate in MetaMetrics"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Participate in MetaMetrics to help us make MetaMask better"
+    "message": "Participate in MetaMetrics to help us make Bryt better"
   },
   "password": {
     "message": "Password"
@@ -3810,7 +3810,7 @@
     "message": "Password not long enough"
   },
   "passwordSetupDetails": {
-    "message": "This password will unlock your MetaMask wallet only on this device. MetaMask can not recover this password."
+    "message": "This password will unlock your Bryt wallet only on this device. Bryt can not recover this password."
   },
   "passwordStrength": {
     "message": "Password strength: $1",
@@ -3820,7 +3820,7 @@
     "message": "A strong password can improve the security of your wallet should your device be stolen or compromised."
   },
   "passwordTermsWarning": {
-    "message": "I understand that MetaMask cannot recover this password for me. $1"
+    "message": "I understand that Bryt cannot recover this password for me. $1"
   },
   "passwordsDontMatch": {
     "message": "Passwords don't match"
@@ -3901,11 +3901,11 @@
     "description": "The description for the `wallet_snap_*` permission. $1 is the name of the Snap."
   },
   "permission_assets": {
-    "message": "Display account assets in MetaMask.",
+    "message": "Display account assets in Bryt.",
     "description": "The description for the `endowment:name-assets` permission."
   },
   "permission_assetsDescription": {
-    "message": "Allow $1 to provide asset information to the MetaMask client. The assets can be onchain or offchain.",
+    "message": "Allow $1 to provide asset information to the Bryt client. The assets can be onchain or offchain.",
     "description": "An extended description for the `endowment:assets` permission. $1 is the name of the Snap."
   },
   "permission_cronjob": {
@@ -3917,11 +3917,11 @@
     "description": "An extended description for the `snap_cronjob` permission. $1 is the snap name."
   },
   "permission_dialog": {
-    "message": "Display dialog windows in MetaMask.",
+    "message": "Display dialog windows in Bryt.",
     "description": "The description for the `snap_dialog` permission"
   },
   "permission_dialogDescription": {
-    "message": "Allow $1 to display MetaMask popups with custom text, input field, and buttons to approve or reject an action.\nCan be used to create e.g. alerts, confirmations, and opt-in flows for a snap.",
+    "message": "Allow $1 to display Bryt popups with custom text, input field, and buttons to approve or reject an action.\nCan be used to create e.g. alerts, confirmations, and opt-in flows for a snap.",
     "description": "An extended description for the `snap_dialog` permission. $1 is the snap name."
   },
   "permission_ethereumAccounts": {
@@ -3933,7 +3933,7 @@
     "description": "The description for the `endowment:ethereum-provider` permission"
   },
   "permission_ethereumProviderDescription": {
-    "message": "Allow $1 to communicate with MetaMask directly, in order for it to read data from the blockchain and suggest messages and transactions.",
+    "message": "Allow $1 to communicate with Bryt directly, in order for it to read data from the blockchain and suggest messages and transactions.",
     "description": "An extended description for the `endowment:ethereum-provider` permission. $1 is the snap name."
   },
   "permission_getEntropy": {
@@ -3941,7 +3941,7 @@
     "description": "The description for the `snap_getEntropy` permission. $1 is the snap name."
   },
   "permission_getEntropyDescription": {
-    "message": "Allow $1 to derive arbitrary keys unique to $1, without exposing them. These keys are separate from your MetaMask account(s) and not related to your private keys or Secret Recovery Phrase. Other snaps cannot access this information.",
+    "message": "Allow $1 to derive arbitrary keys unique to $1, without exposing them. These keys are separate from your Bryt account(s) and not related to your private keys or Secret Recovery Phrase. Other snaps cannot access this information.",
     "description": "An extended description for the `snap_getEntropy` permission. $1 is the snap name."
   },
   "permission_getLocale": {
@@ -3949,7 +3949,7 @@
     "description": "The description for the `snap_getLocale` permission"
   },
   "permission_getLocaleDescription": {
-    "message": "Let $1 access your preferred language from your MetaMask settings. This can be used to localize and display $1's content using your language.",
+    "message": "Let $1 access your preferred language from your Bryt settings. This can be used to localize and display $1's content using your language.",
     "description": "An extended description for the `snap_getLocale` permission. $1 is the snap name."
   },
   "permission_getPreferences": {
@@ -3957,7 +3957,7 @@
     "description": "The description for the `snap_getPreferences` permission"
   },
   "permission_getPreferencesDescription": {
-    "message": "Let $1 access information like your preferred language and fiat currency in your MetaMask settings. This helps $1 display content tailored to your preferences. ",
+    "message": "Let $1 access information like your preferred language and fiat currency in your Bryt settings. This helps $1 display content tailored to your preferences. ",
     "description": "An extended description for the `snap_getPreferences` permission. $1 is the snap name."
   },
   "permission_homePage": {
@@ -3965,7 +3965,7 @@
     "description": "The description for the `endowment:page-home` permission"
   },
   "permission_homePageDescription": {
-    "message": "Let $1 display a custom home screen in MetaMask. This can be used for user interfaces, configuration, and dashboards.",
+    "message": "Let $1 display a custom home screen in Bryt. This can be used for user interfaces, configuration, and dashboards.",
     "description": "An extended description for the `endowment:page-home` permission. $1 is the snap name."
   },
   "permission_keyring": {
@@ -4017,7 +4017,7 @@
     "description": "The description for the `endowment:name-lookup` permission."
   },
   "permission_nameLookupDescription": {
-    "message": "Allow the snap to fetch and display address and domain lookups in different parts of the MetaMask UI.",
+    "message": "Allow the snap to fetch and display address and domain lookups in different parts of the Bryt UI.",
     "description": "An extended description for the `endowment:name-lookup` permission."
   },
   "permission_notifications": {
@@ -4025,7 +4025,7 @@
     "description": "The description for the `snap_notify` permission"
   },
   "permission_notificationsDescription": {
-    "message": "Allow $1 to display notifications within MetaMask. A short notification text can be triggered by a snap for actionable or time-sensitive information.",
+    "message": "Allow $1 to display notifications within Bryt. A short notification text can be triggered by a snap for actionable or time-sensitive information.",
     "description": "An extended description for the `snap_notify` permission. $1 is the snap name."
   },
   "permission_rpc": {
@@ -4061,7 +4061,7 @@
     "description": "The description for the `endowment:transaction-insight` permission"
   },
   "permission_transactionInsightDescription": {
-    "message": "Allow $1 to decode transactions and show insights within the MetaMask UI. This can be used for anti-phishing and security solutions.",
+    "message": "Allow $1 to decode transactions and show insights within the Bryt UI. This can be used for anti-phishing and security solutions.",
     "description": "An extended description for the `endowment:transaction-insight` permission. $1 is the snap name."
   },
   "permission_transactionInsightOrigin": {
@@ -4235,7 +4235,7 @@
     "message": "If you turn off profile sync, you won’t be able to receive notifications."
   },
   "profileSyncDescription": {
-    "message": "Creates a profile that MetaMask uses to sync some settings among your devices. This is required to get notifications. $1."
+    "message": "Creates a profile that Bryt uses to sync some settings among your devices. This is required to get notifications. $1."
   },
   "profileSyncPrivacyLink": {
     "message": "Learn how we protect your privacy"
@@ -4316,7 +4316,7 @@
     "message": "Unstake complete"
   },
   "pushPlatformNotificationsSwapCompletedDescription": {
-    "message": "Your MetaMask Swap was successful"
+    "message": "Your Bryt Swap was successful"
   },
   "pushPlatformNotificationsSwapCompletedTitle": {
     "message": "Swap completed"
@@ -4376,7 +4376,7 @@
     "message": "Never share your Secret Recovery Phrase with anyone"
   },
   "recoveryPhraseReminderItemTwo": {
-    "message": "The MetaMask team will never ask for your Secret Recovery Phrase"
+    "message": "The Bryt team will never ask for your Secret Recovery Phrase"
   },
   "recoveryPhraseReminderSubText": {
     "message": "Your Secret Recovery Phrase controls all of your accounts."
@@ -4424,10 +4424,10 @@
     "message": "This account will be removed from your wallet. Please make sure you have the original Secret Recovery Phrase or private key for this imported account before continuing. You can import or create accounts again from the account drop-down. "
   },
   "removeKeyringSnap": {
-    "message": "Removing this Snap removes these accounts from MetaMask:"
+    "message": "Removing this Snap removes these accounts from Bryt:"
   },
   "removeKeyringSnapToolTip": {
-    "message": "The snap controls the accounts, and by removing it, the accounts will be removed from MetaMask, too, but they will remain in the blockchain."
+    "message": "The snap controls the accounts, and by removing it, the accounts will be removed from Bryt, too, but they will remain in the blockchain."
   },
   "removeNFT": {
     "message": "Remove NFT"
@@ -4442,7 +4442,7 @@
     "message": "Remove Snap"
   },
   "removeSnapAccountDescription": {
-    "message": "If you proceed, this account will no longer be available in MetaMask."
+    "message": "If you proceed, this account will no longer be available in Bryt."
   },
   "removeSnapAccountTitle": {
     "message": "Remove account"
@@ -4514,7 +4514,7 @@
     "message": "Reset wallet"
   },
   "resetWalletSubHeader": {
-    "message": "MetaMask does not keep a copy of your password. If you’re having trouble unlocking your account, you will need to reset your wallet. You can do this by providing the Secret Recovery Phrase you used when you set up your wallet."
+    "message": "Bryt does not keep a copy of your password. If you’re having trouble unlocking your account, you will need to reset your wallet. You can do this by providing the Secret Recovery Phrase you used when you set up your wallet."
   },
   "resetWalletUsingSRP": {
     "message": "This action will delete your current wallet and Secret Recovery Phrase from this device, along with the list of accounts you’ve curated. After resetting with a Secret Recovery Phrase, you’ll see a list of accounts based on the Secret Recovery Phrase you use to reset. This new list will automatically include accounts that have a balance. You’ll also be able to $1 created previously. Custom accounts that you’ve imported will need to be $2, and any custom tokens you’ve added to an account will need to be $3 as well."
@@ -4523,7 +4523,7 @@
     "message": "Make sure you’re using the correct Secret Recovery Phrase before proceeding. You will not be able to undo this."
   },
   "restartMetamask": {
-    "message": "Restart MetaMask"
+    "message": "Restart Bryt"
   },
   "restore": {
     "message": "Restore"
@@ -4557,7 +4557,7 @@
     "description": "This is a sentence consisting of link using 'revealSeedWordsSRPName' as $1 and bolded text using 'revealSeedWordsDescription3' as $2."
   },
   "revealSeedWordsDescription2": {
-    "message": "MetaMask is a $1. That means you're the owner of your SRP.",
+    "message": "Bryt is a $1. That means you're the owner of your SRP.",
     "description": "$1 is text link with the message from 'revealSeedWordsNonCustodialWallet'"
   },
   "revealSeedWordsDescription3": {
@@ -4580,7 +4580,7 @@
     "description": "$1 is bolded text using the message from 'revealSeedWordsWarning2'"
   },
   "revealSeedWordsWarning2": {
-    "message": "MetaMask Support will never request this.",
+    "message": "Bryt Support will never request this.",
     "description": "The bolded texted in the second part of 'revealSeedWordsWarning'"
   },
   "revealSensitiveContent": {
@@ -4733,7 +4733,7 @@
     "message": "If someone asks for your recovery phrase they are likely trying to scam you and steal your wallet funds."
   },
   "seedPhraseIntroSidebarCopyTwo": {
-    "message": "Never, ever share your Secret Recovery Phrase, not even with MetaMask!"
+    "message": "Never, ever share your Secret Recovery Phrase, not even with Bryt!"
   },
   "seedPhraseIntroSidebarTitleOne": {
     "message": "What is a Secret Recovery Phrase?"
@@ -4775,7 +4775,7 @@
     "message": "Select an account"
   },
   "selectAnAccountAlreadyConnected": {
-    "message": "This account has already been connected to MetaMask"
+    "message": "This account has already been connected to Bryt"
   },
   "selectEnableDisplayMediaPrivacyPreference": {
     "message": "Turn on Display NFT Media"
@@ -5059,13 +5059,13 @@
     "message": "Sell your crypto for cash"
   },
   "slideCashOutTitle": {
-    "message": "Cash out with MetaMask"
+    "message": "Cash out with Bryt"
   },
   "slideDebitCardDescription": {
     "message": "Available in selected regions"
   },
   "slideDebitCardTitle": {
-    "message": "MetaMask debit card"
+    "message": "Bryt debit card"
   },
   "slideFundWalletDescription": {
     "message": "Get started by adding funds"
@@ -5092,7 +5092,7 @@
     "message": "Your transaction failed"
   },
   "smartTransactionErrorDescription": {
-    "message": "Sudden market changes can cause failures. If the problem continues, reach out to MetaMask customer support."
+    "message": "Sudden market changes can cause failures. If the problem continues, reach out to Bryt customer support."
   },
   "smartTransactionPending": {
     "message": "Your transaction was submitted"
@@ -5142,7 +5142,7 @@
     "message": "Account removed"
   },
   "snapAccountRemovedDescription": {
-    "message": "This account will no longer be available to use in MetaMask."
+    "message": "This account will no longer be available to use in Bryt."
   },
   "snapAccounts": {
     "message": "Account Snaps"
@@ -5282,7 +5282,7 @@
     "message": "Solana"
   },
   "solanaSupportToggleDescription": {
-    "message": "Turning on this feature will give you the option to add a Solana Account to your MetaMask Extension derived from your existing Secret Recovery Phrase. This is an experimental Beta feature, so you should use it at your own risk."
+    "message": "Turning on this feature will give you the option to add a Solana Account to your Bryt Extension derived from your existing Secret Recovery Phrase. This is an experimental Beta feature, so you should use it at your own risk."
   },
   "solanaSupportToggleTitle": {
     "message": "Enable \"Add a new Solana account (Beta)\""
@@ -5400,7 +5400,7 @@
     "message": "To reveal your Secret Recovery Phrase, you need to correctly answer two questions"
   },
   "srpSecurityQuizQuestionOneQuestion": {
-    "message": "If you lose your Secret Recovery Phrase, MetaMask..."
+    "message": "If you lose your Secret Recovery Phrase, Bryt..."
   },
   "srpSecurityQuizQuestionOneRightAnswer": {
     "message": "Can’t help you"
@@ -5469,7 +5469,7 @@
     "message": "Error in retrieving state logs."
   },
   "stateLogFileName": {
-    "message": "MetaMask state logs"
+    "message": "Bryt state logs"
   },
   "stateLogs": {
     "message": "State logs"
@@ -5490,7 +5490,7 @@
     "message": "Connect your Lattice1"
   },
   "step1LatticeWalletMsg": {
-    "message": "You can connect MetaMask to your Lattice1 device once it is set up and online. Unlock your device and have your Device ID ready.",
+    "message": "You can connect Bryt to your Lattice1 device once it is set up and online. Unlock your device and have your Device ID ready.",
     "description": "$1 represents the `hardwareWalletSupportLinkConversion` localization key"
   },
   "step1LedgerWallet": {
@@ -5607,7 +5607,7 @@
     "message": "Take our survey"
   },
   "surveyTitle": {
-    "message": "Shape the future of MetaMask"
+    "message": "Shape the future of Bryt"
   },
   "swap": {
     "message": "Swap"
@@ -5648,6 +5648,13 @@
   "swapAreYouStillThereDescription": {
     "message": "We’re ready to show you the latest quotes when you want to continue"
   },
+  "swapBrytFee": {
+    "message": "Bryt fee"
+  },
+  "swapBrytFeeDescription": {
+    "message": "The fee of $1% is automatically factored into this quote. You pay it in exchange for a license to use Bryt's liquidity provider information aggregation software.",
+    "description": "Provides information about the fee that metamask takes for swaps. $1 is a decimal number."
+  },
   "swapConfirmWithHwWallet": {
     "message": "Confirm with your hardware wallet"
   },
@@ -5673,7 +5680,7 @@
     "message": "Edit limit"
   },
   "swapEnableDescription": {
-    "message": "This is required and gives MetaMask permission to swap your $1.",
+    "message": "This is required and gives Bryt permission to swap your $1.",
     "description": "Gives the user info about the required approval transaction for swaps. $1 will be the symbol of a token being approved for swaps."
   },
   "swapEnableTokenForSwapping": {
@@ -5720,7 +5727,7 @@
     "message": "Gas fees are estimated and will fluctuate based on network traffic and transaction complexity."
   },
   "swapGasFeesExplanation": {
-    "message": "MetaMask doesn't make money from gas fees. These fees are estimates and can change based on how busy the network is and how complex a transaction is. Learn more $1.",
+    "message": "Bryt doesn't make money from gas fees. These fees are estimates and can change based on how busy the network is and how complex a transaction is. Learn more $1.",
     "description": "$1 is a link (text in link can be found at 'swapGasFeesSummaryLinkText')"
   },
   "swapGasFeesExplanationLinkText": {
@@ -5734,7 +5741,7 @@
     "message": "Gas fees on the previous screen are split between these two transactions."
   },
   "swapGasFeesSummary": {
-    "message": "Gas fees are paid to crypto miners who process transactions on the $1 network. MetaMask does not profit from gas fees.",
+    "message": "Gas fees are paid to crypto miners who process transactions on the $1 network. Bryt does not profit from gas fees.",
     "description": "$1 is the selected network, e.g. Ethereum or BSC"
   },
   "swapGasIncludedTooltipExplanation": {
@@ -5746,21 +5753,21 @@
   "swapHighSlippage": {
     "message": "High slippage"
   },
-  "swapIncludesGasAndMetaMaskFee": {
-    "message": "Includes gas and a $1% MetaMask fee",
+  "swapIncludesBrytFeeViewAllQuotes": {
+    "message": "Includes a $1% Bryt fee – $2",
+    "description": "Provides information about the fee that metamask takes for swaps. $1 is a decimal number and $2 is a link to view all quotes."
+  },
+  "swapIncludesGasAndBrytFee": {
+    "message": "Includes gas and a $1% Bryt fee",
     "description": "Provides information about the fee that metamask takes for swaps. $1 is a decimal number."
   },
   "swapIncludesMMFee": {
-    "message": "Includes a $1% MetaMask fee.",
+    "message": "Includes a $1% Bryt fee.",
     "description": "Provides information about the fee that metamask takes for swaps. $1 is a decimal number."
   },
   "swapIncludesMMFeeAlt": {
-    "message": "Quote reflects $1% MetaMask fee",
+    "message": "Quote reflects $1% Bryt fee",
     "description": "Provides information about the fee that metamask takes for swaps using the latest copy. $1 is a decimal number."
-  },
-  "swapIncludesMetaMaskFeeViewAllQuotes": {
-    "message": "Includes a $1% MetaMask fee – $2",
-    "description": "Provides information about the fee that metamask takes for swaps. $1 is a decimal number and $2 is a link to view all quotes."
   },
   "swapLearnMore": {
     "message": "Learn more about Swaps"
@@ -5773,13 +5780,6 @@
   },
   "swapMaxSlippage": {
     "message": "Max slippage"
-  },
-  "swapMetaMaskFee": {
-    "message": "MetaMask fee"
-  },
-  "swapMetaMaskFeeDescription": {
-    "message": "The fee of $1% is automatically factored into this quote. You pay it in exchange for a license to use MetaMask's liquidity provider information aggregation software.",
-    "description": "Provides information about the fee that metamask takes for swaps. $1 is a decimal number."
   },
   "swapNQuotesWithDot": {
     "message": "$1 quotes.",
@@ -5992,7 +5992,7 @@
     "message": "Switch"
   },
   "switchEthereumChainConfirmationDescription": {
-    "message": "This will switch the selected network within MetaMask to a previously added network:"
+    "message": "This will switch the selected network within Bryt to a previously added network:"
   },
   "switchEthereumChainConfirmationTitle": {
     "message": "Allow this site to switch the network?"
@@ -6043,7 +6043,7 @@
     "message": "Terms of service"
   },
   "termsOfUseAgreeText": {
-    "message": " I agree to the Terms of Use, which apply to my use of MetaMask and all of its features"
+    "message": " I agree to the Terms of Use, which apply to my use of Bryt and all of its features"
   },
   "termsOfUseFooterText": {
     "message": "Please scroll to read all sections"
@@ -6058,7 +6058,7 @@
     "message": "Theme"
   },
   "themeDescription": {
-    "message": "Choose your preferred MetaMask theme."
+    "message": "Choose your preferred Bryt theme."
   },
   "thirdPartySoftware": {
     "message": "Third-party software notice",
@@ -6188,7 +6188,7 @@
     "message": "Site suggested"
   },
   "transactionDetailDappGasTooltip": {
-    "message": "Edit to use MetaMask's recommended gas fee based on the latest block."
+    "message": "Edit to use Bryt's recommended gas fee based on the latest block."
   },
   "transactionDetailGasHeading": {
     "message": "Estimated gas fee"
@@ -6200,7 +6200,7 @@
     "message": "Gas fees are set by the network and fluctuate based on network traffic and transaction complexity."
   },
   "transactionDetailGasTooltipIntro": {
-    "message": "Gas fees are paid to crypto miners who process transactions on the $1 network. MetaMask does not profit from gas fees."
+    "message": "Gas fees are paid to crypto miners who process transactions on the $1 network. Bryt does not profit from gas fees."
   },
   "transactionDetailGasTotalSubtitle": {
     "message": "Amount + gas fee"
@@ -6305,7 +6305,7 @@
     "description": "$1 is the wallet device name; $2 is a link to wallet connection guide"
   },
   "troubleStarting": {
-    "message": "MetaMask had trouble starting. This error could be intermittent, so try restarting the extension."
+    "message": "Bryt had trouble starting. This error could be intermittent, so try restarting the extension."
   },
   "trustSiteApprovePermission": {
     "message": "By granting permission, you are allowing the following $1 to access your funds"
@@ -6360,7 +6360,7 @@
   },
   "u2f": {
     "message": "U2F",
-    "description": "A name on an API for the browser to interact with devices that support the U2F protocol. On some browsers we use it to connect MetaMask to Ledger devices."
+    "description": "A name on an API for the browser to interact with devices that support the U2F protocol. On some browsers we use it to connect Bryt to Ledger devices."
   },
   "unapproved": {
     "message": "Unapproved"
@@ -6451,7 +6451,7 @@
     "message": "Autodetect NFTs"
   },
   "useNftDetectionDescriptionText": {
-    "message": "Let MetaMask add NFTs you own using third-party services. Autodetecting NFTs exposes your IP and account address to these services. Enabling this feature could associate your IP address with your Ethereum address and display fake NFTs airdropped by scammers. You can add tokens manually to avoid this risk."
+    "message": "Let Bryt add NFTs you own using third-party services. Autodetecting NFTs exposes your IP and account address to these services. Enabling this feature could associate your IP address with your Ethereum address and display fake NFTs airdropped by scammers. You can add tokens manually to avoid this risk."
   },
   "usePhishingDetection": {
     "message": "Use phishing detection"
@@ -6463,7 +6463,7 @@
     "message": "Network details check"
   },
   "useSafeChainsListValidationDescription": {
-    "message": "MetaMask uses a third-party service called $1 to show accurate and standardized network details. This reduces your chances of connecting to malicious or incorrect network. When using this feature, your IP address is exposed to chainid.network."
+    "message": "Bryt uses a third-party service called $1 to show accurate and standardized network details. This reduces your chances of connecting to malicious or incorrect network. When using this feature, your IP address is exposed to chainid.network."
   },
   "useSafeChainsListValidationWebsite": {
     "message": "chainid.network",
@@ -6607,20 +6607,20 @@
     "message": "Explore decentralized apps"
   },
   "welcomeLoginDescription": {
-    "message": "Use your MetaMask to login to decentralized apps - no signup needed."
+    "message": "Use your Bryt to login to decentralized apps - no signup needed."
   },
   "welcomeLoginTitle": {
     "message": "Say hello to your wallet"
   },
-  "welcomeToMetaMask": {
+  "welcomeToBryt": {
     "message": "Let's get started"
   },
-  "welcomeToMetaMaskIntro": {
-    "message": "Trusted by millions, MetaMask is a secure wallet making the world of web3 accessible to all."
+  "welcomeToBrytIntro": {
+    "message": "Trusted by millions, Bryt is a secure wallet making the world of web3 accessible to all."
   },
   "whatsNew": {
     "message": "What's new",
-    "description": "This is the title of a popup that gives users notifications about new features and updates to MetaMask."
+    "description": "This is the title of a popup that gives users notifications about new features and updates to Bryt."
   },
   "whatsThis": {
     "message": "What's this?"

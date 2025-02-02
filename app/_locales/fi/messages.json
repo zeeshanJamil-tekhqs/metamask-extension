@@ -30,7 +30,7 @@
     "message": "toimintaloki"
   },
   "addAcquiredTokens": {
-    "message": "Lisää MetaMaskia käyttämällä hankkimasi tietueet"
+    "message": "Lisää Brytia käyttämällä hankkimasi tietueet"
   },
   "addAlias": {
     "message": "Lisää alias"
@@ -55,15 +55,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Bryt",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Bryt Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Bryt Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -82,7 +82,7 @@
     "message": "Automaattisen uloskirjautumisen ajastin (minuuttia)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Määritä, montako minuuttia MetaMask on ollut joutilaana ennen kuin sinut kirjataan automaattisesti ulos"
+    "message": "Määritä, montako minuuttia Bryt on ollut joutilaana ennen kuin sinut kirjataan automaattisesti ulos"
   },
   "average": {
     "message": "Keskiverto"
@@ -91,7 +91,7 @@
     "message": "Edellinen"
   },
   "backupApprovalInfo": {
-    "message": "Tämä salainen koodi vaaditaan kukkarosi palauttamiseen siinä tapauksessa, että kadotat laitteesi, unohdat salasanasi, joudut asentamaan MetaMaskin uudestaan tai haluat käyttää lompakkoasi jollakin toisella laitteella."
+    "message": "Tämä salainen koodi vaaditaan kukkarosi palauttamiseen siinä tapauksessa, että kadotat laitteesi, unohdat salasanasi, joudut asentamaan Brytin uudestaan tai haluat käyttää lompakkoasi jollakin toisella laitteella."
   },
   "backupApprovalNotice": {
     "message": "Varmuuskopioi salainen palautuskoodisi pitääksesi kukkarosi ja varasi turvassa."
@@ -131,7 +131,7 @@
     "message": "Ketjun tunnus"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "Sinun tarvitsee käyttää MetaMaskia Google Chromessa voidaksesi yhdistää laitteistokukkaroosi."
+    "message": "Sinun tarvitsee käyttää Brytia Google Chromessa voidaksesi yhdistää laitteistokukkaroosi."
   },
   "close": {
     "message": "Sulje"
@@ -294,7 +294,7 @@
     "message": "Yhdistä kiinteän laitteiston lompakko"
   },
   "hardwareWalletsMsg": {
-    "message": "Valitse laitteistokukkaro, jota haluaisit käyttää MetaMaskilla"
+    "message": "Valitse laitteistokukkaro, jota haluaisit käyttää Brytilla"
   },
   "here": {
     "message": "tässä",
@@ -320,7 +320,7 @@
     "message": "Tuo tili"
   },
   "importAccountMsg": {
-    "message": "Tuotuja tilejä ei liitetä alkuperäisen MetaMask-tilisi siemenlauseeseen. Lue lisää tuoduista tileistä"
+    "message": "Tuotuja tilejä ei liitetä alkuperäisen Bryt-tilisi siemenlauseeseen. Lue lisää tuoduista tileistä"
   },
   "imported": {
     "message": "Tuotu",
@@ -400,7 +400,7 @@
     "message": "Viesti"
   },
   "metamaskVersion": {
-    "message": "MetaMask-versio"
+    "message": "Bryt-versio"
   },
   "mustSelectOne": {
     "message": "Valittava vähintään 1 poletti."
@@ -471,7 +471,7 @@
     "message": "Osallistu MetaMetricsiin"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Osallistu MetaMetricsiin auttaaksesi meitä tekemään MetaMaskista paremman"
+    "message": "Osallistu MetaMetricsiin auttaaksesi meitä tekemään Brytista paremman"
   },
   "password": {
     "message": "Salasana"

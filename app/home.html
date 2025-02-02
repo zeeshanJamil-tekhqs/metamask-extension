@@ -1,20 +1,38 @@
-<!doctype html>
+<!DOCTYPE html>
 <html dir="ltr">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, user-scalable=no"
+    />
     <% if (it.isMMI && !it.isTest) { %>
-    <title>MetaMask Institutional</title>
+    <title>Bryt Institutional</title>
     <% } else { %>
-    <title>MetaMask</title>
+    <title>Bryt</title>
     <% } %>
-    <link rel="preload" href="/_locales/en/messages.json" as="fetch" crossorigin="anonymous" />
-    <link rel="stylesheet" href="../ui/css/index.scss">
+    <link
+      rel="preload"
+      href="/_locales/en/messages.json"
+      as="fetch"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../ui/css/index.scss" />
   </head>
   <body>
     <div id="app-content">
-      <img class="loading-logo" src="./images/logo/metamask-fox.svg" alt="" loading="lazy" />
-      <img class="loading-spinner" src="./images/spinner.gif" alt="" loading="lazy" />
+      <img
+        class="loading-logo"
+        src="./images/logo/metamask-fox.svg"
+        alt=""
+        loading="lazy"
+      />
+      <img
+        class="loading-spinner"
+        src="./images/spinner.gif"
+        alt=""
+        loading="lazy"
+      />
     </div>
     <div id="popover-content"></div>
     <script src="./scripts/load/ui.ts" defer></script>

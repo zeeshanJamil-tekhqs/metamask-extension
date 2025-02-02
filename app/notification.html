@@ -5,11 +5,11 @@
     <meta charset="utf-8" />
 
     <% if (it.isTest) { %>
-    <title>MetaMask Dialog</title>
+    <title>Bryt Dialog</title>
     <% } else if (it.isMMI) { %>
-    <title>MetaMask Institutional</title>
+    <title>Bryt Institutional</title>
     <% } else { %>
-    <title>MetaMask</title>
+    <title>Bryt</title>
     <% } %>
 
     <style>
@@ -32,7 +32,12 @@
         margin-top: 1rem;
       }
     </style>
-    <link rel="preload" href="/_locales/en/messages.json" as="fetch" crossorigin="anonymous" />
+    <link
+      rel="preload"
+      href="/_locales/en/messages.json"
+      as="fetch"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="../ui/css/index.scss" />
   </head>
   <body class="notification">

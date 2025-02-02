@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import EventEmitter from 'events';
 import React, { useState } from 'react';
 import Button from '../button';
@@ -49,7 +50,8 @@ export const DefaultStory = () => {
         }
       }}
     >
-      <Mascot
+      <img width="120" height="120" src="./images/logo/metamask-fox.svg" />
+      {/* <Mascot
         animationEventEmitter={animationEventEmitter}
         width="120"
         height="120"
@@ -84,7 +86,7 @@ export const DefaultStory = () => {
             Look a clicked location mode
           </Button>
         </ButtonGroup>
-      </div>
+      </div> */}
     </div>
   );
 };

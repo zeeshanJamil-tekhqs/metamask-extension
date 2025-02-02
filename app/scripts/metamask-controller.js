@@ -194,7 +194,8 @@ import {
   CHAIN_SPEC_URL,
   NETWORK_TYPES,
   NetworkStatus,
-  MAINNET_DISPLAY_NAME,
+  // MAINNET_DISPLAY_NAME,
+  BRYT_CONFIG,
 } from '../../shared/constants/network';
 import { getAllowedSmartTransactionsChainIds } from '../../shared/constants/smartTransactions';
 
@@ -563,48 +564,55 @@ export default class MetamaskController extends EventEmitter {
 
       const networks =
         initialNetworkControllerState.networkConfigurationsByChainId;
-
       // Note: Consider changing `getDefaultNetworkControllerState`
       // on the controller side to include some of these tweaks.
-      networks[CHAIN_IDS.MAINNET].name = MAINNET_DISPLAY_NAME;
+      if (!networks[CHAIN_IDS.BRYT]) {
+        networks[CHAIN_IDS.BRYT] = BRYT_CONFIG;
+      }
+      // networks[CHAIN_IDS.MAINNET].name = MAINNET_DISPLAY_NAME;
+      // delete networks[CHAIN_IDS.MAINNET];
       delete networks[CHAIN_IDS.GOERLI];
       delete networks[CHAIN_IDS.LINEA_GOERLI];
+      delete networks[CHAIN_IDS.LINEA_MAINNET];
 
       Object.values(networks).forEach((network) => {
         const id = network.rpcEndpoints[0].networkClientId;
-        network.blockExplorerUrls = [BlockExplorerUrl[id]];
+        if (id !== BRYT_CONFIG.rpcEndpoints[0].networkClientId) {
+          network.blockExplorerUrls = [BlockExplorerUrl[id]];
+        }
         network.defaultBlockExplorerUrlIndex = 0;
       });
 
-      let network;
-      if (process.env.IN_TEST) {
-        network = {
-          chainId: CHAIN_IDS.LOCALHOST,
-          name: 'Localhost 8545',
-          nativeCurrency: 'ETH',
-          blockExplorerUrls: [],
-          defaultRpcEndpointIndex: 0,
-          rpcEndpoints: [
-            {
-              networkClientId: 'networkConfigurationId',
-              url: 'http://localhost:8545',
-              type: 'custom',
-            },
-          ],
-        };
-        networks[CHAIN_IDS.LOCALHOST] = network;
-      } else if (
-        process.env.METAMASK_DEBUG ||
-        process.env.METAMASK_ENVIRONMENT === 'test'
-      ) {
-        network = networks[CHAIN_IDS.SEPOLIA];
-      } else {
-        network = networks[CHAIN_IDS.MAINNET];
-      }
-
+      // let network;
+      // if (process.env.IN_TEST) {
+      //   network = {
+      //     chainId: CHAIN_IDS.LOCALHOST,
+      //     name: 'Localhost 8545',
+      //     nativeCurrency: 'ETH',
+      //     blockExplorerUrls: [],
+      //     defaultRpcEndpointIndex: 0,
+      //     rpcEndpoints: [
+      //       {
+      //         networkClientId: 'networkConfigurationId',
+      //         url: 'http://localhost:8545',
+      //         type: 'custom',
+      //       },
+      //     ],
+      //   };
+      //   networks[CHAIN_IDS.LOCALHOST] = network;
+      // } else if (
+      //   process.env.METAMASK_DEBUG ||
+      //   process.env.METAMASK_ENVIRONMENT === 'test'
+      // ) {
+      //   network = networks[CHAIN_IDS.SEPOLIA];
+      // } else {
+      //   network = networks[CHAIN_IDS.MAINNET];
+      // }
+      const network = networks[CHAIN_IDS.BRYT];
       initialNetworkControllerState.selectedNetworkClientId =
         network.rpcEndpoints[network.defaultRpcEndpointIndex].networkClientId;
     }
+    console.log('initialNetworkControllerState', initialNetworkControllerState);
 
     this.networkController = new NetworkController({
       messenger: networkControllerMessenger,

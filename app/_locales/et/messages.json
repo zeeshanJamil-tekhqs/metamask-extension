@@ -30,7 +30,7 @@
     "message": "tegevuste logi"
   },
   "addAcquiredTokens": {
-    "message": "Lisage load, mis olete MetaMaskiga saanud"
+    "message": "Lisage load, mis olete Brytiga saanud"
   },
   "addAlias": {
     "message": "Lisage alias"
@@ -55,15 +55,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "MetaMask",
+    "message": "Bryt",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "MetaMask Beta",
+    "message": "Bryt Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "MetaMask Flask",
+    "message": "Bryt Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -82,7 +82,7 @@
     "message": "Automaatse väljalogimise taimer (minutites)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Seadistage jõudeolek minutites, enne kui MetaMask automaatselt välja logib"
+    "message": "Seadistage jõudeolek minutites, enne kui Bryt automaatselt välja logib"
   },
   "average": {
     "message": "Keskmine"
@@ -91,7 +91,7 @@
     "message": "Tagasi"
   },
   "backupApprovalInfo": {
-    "message": "See salakood on vajalik teie rahakoti taastamiseks, kui kaotate oma seadme, unustate parooli, peate MetaMaski uuesti alla laadima, või kui soovite avada oma rahakoti mõnel teisel seadmel."
+    "message": "See salakood on vajalik teie rahakoti taastamiseks, kui kaotate oma seadme, unustate parooli, peate Bryti uuesti alla laadima, või kui soovite avada oma rahakoti mõnel teisel seadmel."
   },
   "backupApprovalNotice": {
     "message": "Varundage oma salajane taastamisvõti, et oma rahakott ja vahendid turvalisena hoida."
@@ -131,7 +131,7 @@
     "message": "Ahela ID"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "Riistvararahakoti ühendamiseks peate kasutama MetaMaski Google Chrome'is."
+    "message": "Riistvararahakoti ühendamiseks peate kasutama Bryti Google Chrome'is."
   },
   "close": {
     "message": "Sule"
@@ -294,7 +294,7 @@
     "message": "Ühendage riistvara rahakott"
   },
   "hardwareWalletsMsg": {
-    "message": "Valige riistvara rahakott, mida soovite MetaMaskis kasutada"
+    "message": "Valige riistvara rahakott, mida soovite Brytis kasutada"
   },
   "here": {
     "message": "siin",
@@ -320,7 +320,7 @@
     "message": "Impordi konto"
   },
   "importAccountMsg": {
-    "message": "Imporditud kontosid ei seostata teie ainulaadse MetaMaski konto seemnefraasiga. Lugege imporditud kontode kohta lähemalt"
+    "message": "Imporditud kontosid ei seostata teie ainulaadse Bryti konto seemnefraasiga. Lugege imporditud kontode kohta lähemalt"
   },
   "imported": {
     "message": "Imporditud",
@@ -394,7 +394,7 @@
     "message": "Sõnum"
   },
   "metamaskVersion": {
-    "message": "MetaMaski versioon"
+    "message": "Bryti versioon"
   },
   "mustSelectOne": {
     "message": "Peate valima vähemalt 1 loa."
@@ -468,7 +468,7 @@
     "message": "Osalege MetaMetricsis"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Osalege MetaMetricsis, et aidata meil MetaMaski paremaks teha"
+    "message": "Osalege MetaMetricsis, et aidata meil Bryti paremaks teha"
   },
   "password": {
     "message": "Parool"

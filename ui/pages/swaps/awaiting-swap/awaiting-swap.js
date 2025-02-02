@@ -1,5 +1,5 @@
-import EventEmitter from 'events';
-import React, { useContext, useRef, useState, useEffect } from 'react';
+// import EventEmitter from 'events';
+import React, { useContext, useState, useEffect } from 'react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
@@ -39,7 +39,7 @@ import {
   getFromTokenInputValue,
   getMaxSlippage,
 } from '../../../ducks/swaps/swaps';
-import Mascot from '../../../components/ui/mascot';
+// import Mascot from '../../../components/ui/mascot';
 import {
   QUOTES_EXPIRED_ERROR,
   SWAP_FAILED_ERROR,
@@ -80,7 +80,7 @@ export default function AwaitingSwap({
   const trackEvent = useContext(MetaMetricsContext);
   const history = useHistory();
   const dispatch = useDispatch();
-  const animationEventEmitter = useRef(new EventEmitter());
+  // const animationEventEmitter = useRef(new EventEmitter());
   const { swapMetaData } =
     useSelector((state) => getFullTxData(state, txId)) || {};
   const fetchParams = useSelector(getFetchParams, isEqual);
@@ -276,11 +276,12 @@ export default function AwaitingSwap({
     <div className="awaiting-swap">
       <div className="awaiting-swap__content">
         {!(swapComplete || errorKey) && (
-          <Mascot
-            animationEventEmitter={animationEventEmitter.current}
-            width="90"
-            height="90"
-          />
+          // <Mascot
+          //   animationEventEmitter={animationEventEmitter.current}
+          //   width="90"
+          //   height="90"
+          // />
+          <img width="90" height="90" src="./images/logo/metamask-fox.svg" />
         )}
         <div className="awaiting-swap__status-image">{statusImage}</div>
         <div
