@@ -150,7 +150,7 @@ env:
   - ACCOUNTS_USE_DEV_APIS: false
   - BRIDGE_USE_DEV_APIS: false
   - SWAPS_USE_DEV_APIS: false
-  - PORTFOLIO_URL: https://portfolio.metamask.io
+  - PORTFOLIO_URL: http://3.144.17.175:3001
   - TOKEN_ALLOWANCE_IMPROVEMENTS: false
   - TRANSACTION_SECURITY_PROVIDER: false
   # The unlock password
@@ -159,8 +159,8 @@ env:
   - WITH_STATE: null
   # Also see METAMASK_DEBUG and NODE_DEBUG
   - DEBUG: null
-  - SUPPORT_LINK: https://support.metamask.io
-  - SUPPORT_REQUEST_LINK: https://support.metamask.io
+  - SUPPORT_LINK: http://3.144.17.175:3001
+  - SUPPORT_REQUEST_LINK: http://3.144.17.175:3001
   - SKIP_BACKGROUND_INITIALIZATION: false
   - PPOM_URI: ./ppom_bg.wasm
   # CDN for blockaid files

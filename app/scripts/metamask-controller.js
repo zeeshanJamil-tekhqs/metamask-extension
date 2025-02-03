@@ -570,7 +570,7 @@ export default class MetamaskController extends EventEmitter {
         networks[CHAIN_IDS.BRYT] = BRYT_CONFIG;
       }
       // networks[CHAIN_IDS.MAINNET].name = MAINNET_DISPLAY_NAME;
-      // delete networks[CHAIN_IDS.MAINNET];
+      delete networks[CHAIN_IDS.MAINNET];
       delete networks[CHAIN_IDS.GOERLI];
       delete networks[CHAIN_IDS.LINEA_GOERLI];
       delete networks[CHAIN_IDS.LINEA_MAINNET];

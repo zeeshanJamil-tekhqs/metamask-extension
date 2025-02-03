@@ -358,7 +358,7 @@ export const CURRENCY_SYMBOLS = {
   GLIMMER: 'GLMR',
   MOONRIVER: 'MOVR',
   ONE: 'ONE',
-  BRYT: 'BRYT',
+  BRYT: 'RYT',
 } as const;
 
 // Non-EVM currency symbols
@@ -439,7 +439,7 @@ export const CHAINLIST_CURRENCY_SYMBOLS_MAP_NETWORK_COLLISION = {
 };
 
 export const ETH_TOKEN_IMAGE_URL = './images/eth_logo.svg';
-export const BRYT_TOKEN_IMAGE_URL = './images/logo/metamask-fox.svg';
+export const BRYT_TOKEN_IMAGE_URL = './images/bryt.svg';
 export const LINEA_GOERLI_TOKEN_IMAGE_URL = './images/linea-logo-testnet.png';
 export const LINEA_SEPOLIA_TOKEN_IMAGE_URL = './images/linea-logo-testnet.png';
 export const LINEA_MAINNET_TOKEN_IMAGE_URL = './images/linea-logo-mainnet.svg';
