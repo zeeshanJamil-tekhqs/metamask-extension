@@ -193,7 +193,6 @@ export default class ExtensionPlatform {
 
   async _showNotification(title, message, url) {
     const iconUrl = await browser.runtime.getURL('../../images/icon-64.png');
-
     await browser.notifications.create(url, {
       type: 'basic',
       title,

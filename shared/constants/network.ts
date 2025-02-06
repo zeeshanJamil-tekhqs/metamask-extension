@@ -85,7 +85,7 @@ export const NETWORK_TYPES = {
   LINEA_GOERLI: 'linea-goerli',
   LINEA_SEPOLIA: 'linea-sepolia',
   LINEA_MAINNET: 'linea-mainnet',
-  BRYT: 'bryt',
+  BRYT: 'ryt',
 } as const;
 
 export type NetworkTypes = (typeof NETWORK_TYPES)[keyof typeof NETWORK_TYPES];
@@ -264,7 +264,7 @@ export const DEPRECATED_NETWORKS = [
 export const MAX_SAFE_CHAIN_ID = 4503599627370476;
 
 export const MAINNET_DISPLAY_NAME = 'Ethereum Mainnet';
-export const BRYT_DISPLAY_NAME = 'Bryt Devnet';
+export const BRYT_DISPLAY_NAME = 'Ryt Devnet';
 export const GOERLI_DISPLAY_NAME = 'Goerli';
 export const SEPOLIA_DISPLAY_NAME = 'Sepolia';
 export const LINEA_GOERLI_DISPLAY_NAME = 'Linea Goerli';
@@ -550,7 +550,7 @@ const typedCapitalize = <K extends string>(k: K): Capitalize<K> =>
 export const TEST_NETWORK_TICKER_MAP: {
   [K in Exclude<
     NetworkType,
-    'localhost' | 'mainnet' | 'rpc' | 'linea-mainnet' | 'bryt'
+    'localhost' | 'mainnet' | 'rpc' | 'linea-mainnet' | 'ryt'
   >]: string;
 } = {
   [NETWORK_TYPES.GOERLI]: `${typedCapitalize(NETWORK_TYPES.GOERLI)}${
