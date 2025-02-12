@@ -40,7 +40,7 @@ import {
   MetaMetricsEventName,
 } from '../../../../shared/constants/metametrics';
 import { FirstTimeFlowType } from '../../../../shared/constants/onboarding';
-import OnboardingPinBillboard from './pin-billboard';
+// import OnboardingPinBillboard from './pin-billboard';
 ///: END:ONLY_INCLUDE_IF
 
 export default function OnboardingPinExtension() {
@@ -112,9 +112,15 @@ export default function OnboardingPinExtension() {
               <Text align={TextAlign.Center}>
                 {t('onboardingPinExtensionDescription')}
               </Text>
-              <div className="onboarding-pin-extension__diagram">
+              {/* <div className="onboarding-pin-extension__diagram">
                 <OnboardingPinBillboard />
-              </div>
+              </div> */}
+              <img
+                src="/images/onboarding-mmi-pin-browser.svg"
+                width="799"
+                height="320"
+                alt=""
+              />
             </div>
             <div>
               <Text align={TextAlign.Center}>
@@ -123,6 +129,12 @@ export default function OnboardingPinExtension() {
               <Text align={TextAlign.Center}>
                 {t('onboardingPinExtensionDescription3')}
               </Text>
+              {/* <img
+                src="/images/onboarding-pin-browser.svg"
+                width="799"
+                height="320"
+                alt=""
+              /> */}
               <img
                 src="/images/onboarding-pin-browser.svg"
                 width="799"

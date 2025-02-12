@@ -241,7 +241,7 @@ export const getDefaultPreferencesControllerState =
       ? LedgerTransportTypes.webhid
       : LedgerTransportTypes.u2f,
     snapRegistryList: {},
-    theme: ThemeType.os,
+    theme: ThemeType.light,
     ///: BEGIN:ONLY_INCLUDE_IF(keyring-snaps)
     snapsAddSnapAccountModalDismissed: false,
     ///: END:ONLY_INCLUDE_IF
