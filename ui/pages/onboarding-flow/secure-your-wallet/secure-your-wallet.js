@@ -82,6 +82,7 @@ export default function SecureYourWallet() {
     zh: 'Chinese - China',
   };
 
+  // eslint-disable-next-line no-unused-vars
   const defaultLang = subtitles[currentLocale] ? currentLocale : 'en';
   return (
     <Box
@@ -107,7 +108,7 @@ export default function SecureYourWallet() {
       >
         {t('seedPhraseIntroTitle')}
       </Text>
-      <Text
+      {/* <Text
         variant={TextVariant.bodyLgMedium}
         marginBottom={6}
         className="secure-your-wallet__details"
@@ -145,7 +146,7 @@ export default function SecureYourWallet() {
             );
           })}
         </Box>
-      )}
+      )} */}
       <Box
         className="secure-your-wallet__actions"
         marginBottom={8}

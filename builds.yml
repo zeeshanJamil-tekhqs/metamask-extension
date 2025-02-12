@@ -33,7 +33,7 @@ buildTypes:
     manifestOverrides: false
     # Build name used in multiple user-readable places
     # eg. eip6963
-    buildNameOverride: MetaMask
+    buildNameOverride: RYT Wallet
 
   beta:
     id: 11
@@ -278,7 +278,7 @@ env:
   # Determines if feature flagged Chain permissions
   - CHAIN_PERMISSIONS: ''
   # Determines if Portfolio View UI should be shown
-  - PORTFOLIO_VIEW: 'true'
+  - PORTFOLIO_VIEW: 'false'
   # Enables use of test gas fee flow to debug gas fee estimation
   - TEST_GAS_FEE_FLOWS: false
   # Temporary mechanism to enable security alerts API prior to release

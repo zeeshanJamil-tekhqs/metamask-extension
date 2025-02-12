@@ -55,15 +55,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "Bryt",
+    "message": "RYT",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "Bryt Beta",
+    "message": "RYT Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "Bryt Flask",
+    "message": "RYT Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -82,7 +82,7 @@
     "message": "Automaattisen uloskirjautumisen ajastin (minuuttia)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Määritä, montako minuuttia Bryt on ollut joutilaana ennen kuin sinut kirjataan automaattisesti ulos"
+    "message": "Määritä, montako minuuttia RYT on ollut joutilaana ennen kuin sinut kirjataan automaattisesti ulos"
   },
   "average": {
     "message": "Keskiverto"
@@ -320,7 +320,7 @@
     "message": "Tuo tili"
   },
   "importAccountMsg": {
-    "message": "Tuotuja tilejä ei liitetä alkuperäisen Bryt-tilisi siemenlauseeseen. Lue lisää tuoduista tileistä"
+    "message": "Tuotuja tilejä ei liitetä alkuperäisen RYT-tilisi siemenlauseeseen. Lue lisää tuoduista tileistä"
   },
   "imported": {
     "message": "Tuotu",
@@ -400,7 +400,7 @@
     "message": "Viesti"
   },
   "metamaskVersion": {
-    "message": "Bryt-versio"
+    "message": "RYT-versio"
   },
   "mustSelectOne": {
     "message": "Valittava vähintään 1 poletti."

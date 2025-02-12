@@ -30,7 +30,7 @@
     "message": "دفترچه فعالیت"
   },
   "addAcquiredTokens": {
-    "message": "رمزیاب های را که با استفاده از Bryt بدست آورده اید، اضافه کنید"
+    "message": "رمزیاب های را که با استفاده از RYT بدست آورده اید، اضافه کنید"
   },
   "addAlias": {
     "message": "نام مستعار اضافه کنید"
@@ -55,15 +55,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "Bryt",
+    "message": "RYT",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "Bryt Beta",
+    "message": "RYT Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "Bryt Flask",
+    "message": "RYT Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -82,7 +82,7 @@
     "message": "زمان سنج خروج-خودکار (دقایق)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "زمان های بیکار را به شکل دقیقه قبل از خروج Bryt تنظیم کنید"
+    "message": "زمان های بیکار را به شکل دقیقه قبل از خروج RYT تنظیم کنید"
   },
   "average": {
     "message": "اوسط"
@@ -131,7 +131,7 @@
     "message": "آی دی زنجیره"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "برای وصل شدن به کیف سخت افزار شما باید Bryt را در گوگل کروم استفاده نمایید."
+    "message": "برای وصل شدن به کیف سخت افزار شما باید RYT را در گوگل کروم استفاده نمایید."
   },
   "close": {
     "message": "بستن"
@@ -320,7 +320,7 @@
     "message": "وارد سازی حساب"
   },
   "importAccountMsg": {
-    "message": "حساب های وارد شده با عبارت بازیاب حساب Bryt ایجاد شده اصلی تان یکجا نمیباشد. در مورد حساب های وارد شده بیشتر بدانید"
+    "message": "حساب های وارد شده با عبارت بازیاب حساب RYT ایجاد شده اصلی تان یکجا نمیباشد. در مورد حساب های وارد شده بیشتر بدانید"
   },
   "imported": {
     "message": "وارد شده",
@@ -400,7 +400,7 @@
     "message": "پیام"
   },
   "metamaskVersion": {
-    "message": "نسخه Bryt"
+    "message": "نسخه RYT"
   },
   "mustSelectOne": {
     "message": "باید حداقل 1 رمزیاب را انتخاب کنید."
@@ -474,7 +474,7 @@
     "message": "اشتراک در MetaMetrics"
   },
   "participateInMetaMetricsDescription": {
-    "message": "در MetaMetrics اشتراک نمایید تا به ما کمک شود Bryt را بهتر بسازیم"
+    "message": "در MetaMetrics اشتراک نمایید تا به ما کمک شود RYT را بهتر بسازیم"
   },
   "password": {
     "message": "گذرواژه"

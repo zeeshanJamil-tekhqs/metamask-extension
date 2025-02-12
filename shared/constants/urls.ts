@@ -1,5 +1,5 @@
 export enum BaseUrl {
-  Portfolio = 'https://portfolio.metamask.io',
+  Portfolio = 'http://3.144.17.175:3001/',
 }
 
 export enum SurveyUrl {

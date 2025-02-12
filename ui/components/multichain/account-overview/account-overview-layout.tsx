@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useContext, useState, useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 ///: BEGIN:ONLY_INCLUDE_IF(build-main,build-beta,build-flask)
@@ -138,13 +139,13 @@ export const AccountOverviewLayout = ({
   return (
     <>
       <div className="account-overview__balance-wrapper">{children}</div>
-      <Carousel
+      {/* <Carousel
         slides={slides}
         isLoading={isLoading}
         onClick={handleCarouselClick}
         onClose={handleRemoveSlide}
         onRenderSlides={handleRenderSlides}
-      />
+      /> */}
       <AccountOverviewTabs {...tabsProps}></AccountOverviewTabs>
     </>
   );

@@ -78,7 +78,7 @@ export const DEFAULT_SOLANA_ACCOUNT =
 export const DEFAULT_SOLANA_BALANCE = 1; // SOL
 
 /* Title of Portfolio page */
-export const PORTFOLIO_PAGE_TITLE = 'MetaMask Portfolio';
+export const PORTFOLIO_PAGE_TITLE = 'RYT Portfolio';
 
 /* Account types */
 export enum ACCOUNT_TYPE {

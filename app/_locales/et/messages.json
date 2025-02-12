@@ -55,15 +55,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "Bryt",
+    "message": "RYT",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "Bryt Beta",
+    "message": "RYT Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "Bryt Flask",
+    "message": "RYT Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -82,7 +82,7 @@
     "message": "Automaatse väljalogimise taimer (minutites)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Seadistage jõudeolek minutites, enne kui Bryt automaatselt välja logib"
+    "message": "Seadistage jõudeolek minutites, enne kui RYT automaatselt välja logib"
   },
   "average": {
     "message": "Keskmine"

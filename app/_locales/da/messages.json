@@ -30,7 +30,7 @@
     "message": "aktivitetslog"
   },
   "addAcquiredTokens": {
-    "message": "Tilføj de tokens du har erhvervet ved hjælp af Bryt"
+    "message": "Tilføj de tokens du har erhvervet ved hjælp af RYT"
   },
   "addAlias": {
     "message": "Tilføj alias"
@@ -55,15 +55,15 @@
     "description": "The description of the application"
   },
   "appName": {
-    "message": "Bryt",
+    "message": "RYT",
     "description": "The name of the application"
   },
   "appNameBeta": {
-    "message": "Bryt Beta",
+    "message": "RYT Beta",
     "description": "The name of the application (Beta)"
   },
   "appNameFlask": {
-    "message": "Bryt Flask",
+    "message": "RYT Flask",
     "description": "The name of the application (Flask)"
   },
   "approve": {
@@ -82,7 +82,7 @@
     "message": "Timer for automatisk udlogning (minutter)"
   },
   "autoLockTimeLimitDescription": {
-    "message": "Indstil den passive tid i minutter, før Bryt automatisk logger dig ud"
+    "message": "Indstil den passive tid i minutter, før RYT automatisk logger dig ud"
   },
   "average": {
     "message": "Gennemsnit"
@@ -91,7 +91,7 @@
     "message": "Tilbage"
   },
   "backupApprovalInfo": {
-    "message": "Den hemmelige kode er påkrævet for at gendanne din pung, hvis du mister din enhed, glemmer dit kodeord, er nødt til at geninstallere Bryt eller ønsker adgang til din pung fra en anden enhed."
+    "message": "Den hemmelige kode er påkrævet for at gendanne din pung, hvis du mister din enhed, glemmer dit kodeord, er nødt til at geninstallere RYT eller ønsker adgang til din pung fra en anden enhed."
   },
   "backupApprovalNotice": {
     "message": "Sikkerhedskopiér din Hemmelige Gendannelseskode for at holde din tegnebog og dine penge sikre."
@@ -131,7 +131,7 @@
     "message": "Kæde-ID"
   },
   "chromeRequiredForHardwareWallets": {
-    "message": "Du skal bruge Bryt i Google Chrome for at forbinde med din Hardware Wallet."
+    "message": "Du skal bruge RYT i Google Chrome for at forbinde med din Hardware Wallet."
   },
   "close": {
     "message": "Luk"
@@ -291,7 +291,7 @@
     "message": "Tilslut en hardware-tegnebog"
   },
   "hardwareWalletsMsg": {
-    "message": "Vælg en hardware-pung du vil bruge med Bryt"
+    "message": "Vælg en hardware-pung du vil bruge med RYT"
   },
   "here": {
     "message": "her",
@@ -317,7 +317,7 @@
     "message": "Importer konto"
   },
   "importAccountMsg": {
-    "message": "Importerede konti vil ikke blive forbundet med din oprindeligt oprettede seed-sætning for din Bryt-konto. Få mere at vide om importerede konti"
+    "message": "Importerede konti vil ikke blive forbundet med din oprindeligt oprettede seed-sætning for din RYT-konto. Få mere at vide om importerede konti"
   },
   "imported": {
     "message": "Importeret",
@@ -459,7 +459,7 @@
     "message": "Deltag i MetaMetrics"
   },
   "participateInMetaMetricsDescription": {
-    "message": "Deltag i MetaMetrics for at hjælpe os med at gøre Bryt bedre"
+    "message": "Deltag i MetaMetrics for at hjælpe os med at gøre RYT bedre"
   },
   "password": {
     "message": "Adgangskode"
