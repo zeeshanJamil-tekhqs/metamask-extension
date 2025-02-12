@@ -69,7 +69,7 @@ import { LedgerTransportTypes } from '../../../shared/constants/hardware-wallets
 import Analytics from '../lib/segment/analytics';
 
 ///: BEGIN:ONLY_INCLUDE_IF(build-main)
-import { ENVIRONMENT } from '../../../development/build/constants';
+// import { ENVIRONMENT } from '../../../development/build/constants';
 ///: END:ONLY_INCLUDE_IF
 
 import type {
@@ -826,12 +826,12 @@ export default class MetaMetricsController extends BaseController<
     }
 
     ///: BEGIN:ONLY_INCLUDE_IF(build-main)
-    if (
-      this.#environment !== ENVIRONMENT.DEVELOPMENT &&
-      metaMetricsId !== null
-    ) {
-      this.updateExtensionUninstallUrl(participateInMetaMetrics, metaMetricsId);
-    }
+    // if (
+    //   this.#environment !== ENVIRONMENT.DEVELOPMENT &&
+    //   metaMetricsId !== null
+    // ) {
+    //   this.updateExtensionUninstallUrl(participateInMetaMetrics, metaMetricsId);
+    // }
     ///: END:ONLY_INCLUDE_IF
 
     return metaMetricsId;

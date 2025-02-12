@@ -205,6 +205,7 @@ export const CoinOverview = ({
   };
 
   ///: BEGIN:ONLY_INCLUDE_IF(build-main,build-beta,build-flask)
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const handlePortfolioOnClick = useCallback(() => {
     const url = getPortfolioUrl(
       '',
@@ -228,17 +229,18 @@ export const CoinOverview = ({
   const renderPercentageAndAmountChange = () => {
     const renderPortfolioButton = () => {
       ///: BEGIN:ONLY_INCLUDE_IF(build-main,build-beta,build-flask)
-      return (
-        <ButtonLink
-          endIconName={IconName.Export}
-          onClick={handlePortfolioOnClick}
-          as="a"
-          data-testid="portfolio-link"
-          textProps={{ variant: TextVariant.bodyMdMedium }}
-        >
-          {t('portfolio')}
-        </ButtonLink>
-      );
+      // return (
+      //   <ButtonLink
+      //     endIconName={IconName.Export}
+      //     onClick={handlePortfolioOnClick}
+      //     as="a"
+      //     data-testid="portfolio-link"
+      //     textProps={{ variant: TextVariant.bodyMdMedium }}
+      //   >
+      //     {t('portfolio')}
+      //   </ButtonLink>
+      // );
+      return null;
       ///: END:ONLY_INCLUDE_IF
       return null;
     };
